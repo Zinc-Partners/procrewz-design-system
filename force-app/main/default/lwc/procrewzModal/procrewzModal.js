@@ -21,29 +21,19 @@ export default class ProcrewzModal extends LightningElement {
 
   @api
   open() {
-    const dialog = this.template.querySelector("dialog");
-    if (dialog) {
-      this.isOpen = true;
-      document.body.style.overflow = "hidden";
-      dialog.showModal();
-      this.dispatchEvent(new CustomEvent("open"));
-    }
+    this.isOpen = true;
+    this.dispatchEvent(new CustomEvent("open"));
   }
 
   @api
   close() {
-    const dialog = this.template.querySelector("dialog");
-    if (dialog) {
-      dialog.close();
-      this.isOpen = false;
-      document.body.style.overflow = "";
-      this.dispatchEvent(new CustomEvent("close"));
-    }
+    this.isOpen = false;
+    this.dispatchEvent(new CustomEvent("close"));
   }
 
   handleBackdropClick(event) {
-    // Close when clicking the backdrop (dialog element itself, not content)
-    if (event.target === event.currentTarget) {
+    // Close when clicking the backdrop (not the modal content)
+    if (event.target.classList.contains("procrewz-modal__backdrop")) {
       this.close();
     }
   }
@@ -56,21 +46,5 @@ export default class ProcrewzModal extends LightningElement {
     if (event.key === "Escape") {
       this.close();
     }
-  }
-
-  renderedCallback() {
-    const dialog = this.template.querySelector("dialog");
-    if (dialog && !this._listenerAdded) {
-      dialog.addEventListener("close", () => {
-        this.isOpen = false;
-        document.body.style.overflow = "";
-        this.dispatchEvent(new CustomEvent("close"));
-      });
-      this._listenerAdded = true;
-    }
-  }
-
-  disconnectedCallback() {
-    document.body.style.overflow = "";
   }
 }

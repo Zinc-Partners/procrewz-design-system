@@ -1,66 +1,47 @@
 /* Backdrop */
-dialog::backdrop {
+.procrewz-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: var(--color-surface-overlay, rgba(0, 0, 0, 0.5));
-  opacity: 0;
-  /* Fast exit for backdrop */
-  transition:
-    opacity var(--duration-150, 150ms) var(--motion-ease-in, ease-in),
-    overlay var(--duration-150, 150ms) allow-discrete,
-    display var(--duration-150, 150ms) allow-discrete;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn var(--duration-200, 200ms) var(--motion-ease-out, ease-out);
 }
 
-dialog[open]::backdrop {
-  opacity: 1;
-  /* Smooth entrance for backdrop */
-  transition: opacity var(--duration-200, 200ms)
-    var(--motion-ease-out, ease-out);
-}
-
-@starting-style {
-  dialog[open]::backdrop {
+@keyframes fadeIn {
+  from {
     opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-/* Dialog Base */
+/* Modal Base */
 .procrewz-modal {
-  position: fixed;
+  position: relative;
   margin: auto;
   padding: 0;
   border: none;
   background: transparent;
   max-height: calc(100vh - var(--space-64, 64px));
   max-width: calc(100vw - var(--space-32, 32px));
-
-  /* Animation properties */
-  opacity: 0;
-  scale: 0.95;
-
-  /* 
-     * Close animation: faster (150ms) with ease-in for snappy exit
-     * Open animation uses @starting-style below
-     */
-  transition:
-    opacity var(--duration-150, 150ms) var(--motion-ease-in, ease-in),
-    scale var(--duration-150, 150ms) var(--motion-ease-in, ease-in),
-    overlay var(--duration-150, 150ms) allow-discrete,
-    display var(--duration-150, 150ms) allow-discrete;
+  animation: scaleIn var(--duration-200, 200ms) var(--motion-ease-out, ease-out);
 }
 
-.procrewz-modal[open] {
-  opacity: 1;
-  scale: 1;
-
-  /* Open animation: slower (200ms) with ease-out for smooth entrance */
-  transition:
-    opacity var(--duration-200, 200ms) var(--motion-ease-out, ease-out),
-    scale var(--duration-200, 200ms) var(--motion-ease-out, ease-out);
-}
-
-@starting-style {
-  .procrewz-modal[open] {
+@keyframes scaleIn {
+  from {
     opacity: 0;
-    scale: 0.95;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -186,45 +167,31 @@ dialog[open]::backdrop {
 ================================ */
 
 @media (max-width: 639px) {
-  /* Dialog becomes bottom sheet */
+  /* Backdrop alignment for drawer */
+  .procrewz-modal__backdrop {
+    align-items: flex-end;
+  }
+
+  /* Modal becomes bottom sheet */
   .procrewz-modal {
-    position: fixed;
+    position: relative;
     margin: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: auto;
     width: 100%;
     max-width: 100%;
     max-height: 90vh;
     max-height: 90dvh;
-
-    /* Slide up animation instead of scale */
-    opacity: 0;
-    scale: 1;
-    transform: translateY(100%);
-
-    transition:
-      opacity var(--duration-200, 200ms) var(--motion-ease-in, ease-in),
-      transform var(--duration-200, 200ms) var(--motion-ease-in, ease-in),
-      overlay var(--duration-200, 200ms) allow-discrete,
-      display var(--duration-200, 200ms) allow-discrete;
+    animation: slideUp var(--duration-300, 300ms)
+      var(--motion-ease-out, ease-out);
   }
 
-  .procrewz-modal[open] {
-    opacity: 1;
-    transform: translateY(0);
-
-    transition:
-      opacity var(--duration-300, 300ms) var(--motion-ease-out, ease-out),
-      transform var(--duration-300, 300ms) var(--motion-ease-out, ease-out);
-  }
-
-  @starting-style {
-    .procrewz-modal[open] {
+  @keyframes slideUp {
+    from {
       opacity: 0;
       transform: translateY(100%);
-      scale: 1;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 

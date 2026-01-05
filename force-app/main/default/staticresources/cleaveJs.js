@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars, no-useless-escape, @lwc/lwc/no-document-query, @lwc/lwc/no-async-operation */
+
 /**
  * Cleave.js - Input formatting library
  * Bundled for LWC ES Module usage
@@ -1380,14 +1380,5 @@ class Cleave {
   }
 }
 
-// Export for LWC
-export {
-  Cleave,
-  Util,
-  CreditCardDetector,
-  DateFormatter,
-  TimeFormatter,
-  NumeralFormatter,
-  PhoneFormatter
-};
-export default Cleave;
+// Make available globally (works for both Salesforce loadScript and Storybook import)
+window.Cleave = Cleave;

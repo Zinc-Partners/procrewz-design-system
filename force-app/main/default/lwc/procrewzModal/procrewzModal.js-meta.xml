@@ -38,7 +38,6 @@
         description="Hide the close button"
       />
         </targetConfig>
-        <targetConfig targets="lightningCommunity__Page">
-        </targetConfig>
+      
     </targetConfigs>
 </LightningComponentBundle>

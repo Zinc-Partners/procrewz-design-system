@@ -1,0 +1,27 @@
+<template>
+  <c-procrewz-button
+    label="Open Modal"
+    onclick={handleOpenModal}
+  ></c-procrewz-button>
+
+  <c-procrewz-modal
+    title="Confirm Action"
+    size="small"
+    onclose={handleModalClose}
+  >
+    <p>Are you sure you want to continue?</p>
+
+    <div slot="footer">
+      <c-procrewz-button
+        label="Cancel"
+        variant="secondary"
+        onclick={handleCancel}
+      ></c-procrewz-button>
+      <c-procrewz-button
+        label="Confirm"
+        variant="primary"
+        onclick={handleConfirm}
+      ></c-procrewz-button>
+    </div>
+  </c-procrewz-modal>
+</template>

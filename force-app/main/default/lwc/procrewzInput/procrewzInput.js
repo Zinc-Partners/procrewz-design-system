@@ -1,5 +1,6 @@
 import { LightningElement, api, track } from "lwc";
-import Cleave from "c/cleaveService";
+import { loadScript } from "lightning/platformResourceLoader";
+import CLEAVE_JS from "@salesforce/resourceUrl/cleaveJs";
 
 export default class ProcrewzInput extends LightningElement {
   // Core Properties
@@ -77,6 +78,7 @@ export default class ProcrewzInput extends LightningElement {
   // Private
   cleaveInstance = null;
   _boundHandleClickOutside = null;
+  _cleaveLoaded = false;
 
   // ============================================
   // API Getters/Setters
@@ -206,11 +208,42 @@ export default class ProcrewzInput extends LightningElement {
     const today = new Date();
     this.currentMonth = today.getMonth();
     this.currentYear = today.getFullYear();
+
+    // Load Cleave.js from static resource (Salesforce only)
+    if (typeof window !== "undefined" && !window.Cleave && CLEAVE_JS) {
+      loadScript(this, CLEAVE_JS)
+        .then(() => {
+          this._cleaveLoaded = true;
+          // Initialize if mask is already set
+          if (
+            this.effectiveInputMask &&
+            !this.cleaveInstance &&
+            !this.isTimeMask
+          ) {
+            this.initializeCleave();
+          }
+        })
+        .catch((error) => {
+          console.error("Failed to load Cleave.js:", error);
+        });
+    } else if (typeof window !== "undefined" && window.Cleave) {
+      this._cleaveLoaded = true;
+    }
   }
 
   renderedCallback() {
+    // Check if Cleave.js has loaded in Storybook (async script tag)
+    if (typeof window !== "undefined" && window.Cleave && !this._cleaveLoaded) {
+      this._cleaveLoaded = true;
+    }
+
     // Initialize Cleave after render if needed (not for time picker which has custom UI)
-    if (this.effectiveInputMask && !this.cleaveInstance && !this.isTimeMask) {
+    if (
+      this.effectiveInputMask &&
+      !this.cleaveInstance &&
+      !this.isTimeMask &&
+      this._cleaveLoaded
+    ) {
       this.initializeCleave();
     }
 
@@ -237,10 +270,16 @@ export default class ProcrewzInput extends LightningElement {
     const input = this.template.querySelector("input");
     if (!input || this.cleaveInstance) return;
 
+    // Check if Cleave is available on window
+    if (typeof window === "undefined" || !window.Cleave) {
+      console.warn("Cleave.js not loaded yet");
+      return;
+    }
+
     const options = this.getCleaveOptions();
     if (options) {
       try {
-        this.cleaveInstance = new Cleave(input, {
+        this.cleaveInstance = new window.Cleave(input, {
           ...options,
           onValueChanged: (e) => {
             this._value = e.target.value;

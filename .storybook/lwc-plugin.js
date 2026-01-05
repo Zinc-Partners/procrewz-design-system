@@ -139,6 +139,14 @@ function lwcPlugin(config = {}) {
     },
 
     async resolveId(source, importer, options) {
+      // Mock Salesforce platform modules for Storybook
+      if (source === "lightning/platformResourceLoader") {
+        return "\0lightning-platform-resource-loader";
+      }
+      if (source.startsWith("@salesforce/resourceUrl/")) {
+        return "\0salesforce-resource-url";
+      }
+
       // Manually resolve c/ namespace imports
       if (source.startsWith("c/")) {
         const componentName = source.slice(2);
@@ -200,6 +208,24 @@ function lwcPlugin(config = {}) {
       // Handle empty scoped CSS virtual module
       if (id === "\0empty-scoped-css") {
         return "export default [];";
+      }
+
+      // Mock lightning/platformResourceLoader for Storybook
+      if (id === "\0lightning-platform-resource-loader") {
+        return `
+          // Mock for Storybook - in Salesforce this loads scripts dynamically
+          export function loadScript(context, url) {
+            return Promise.resolve();
+          }
+          export function loadStyle(context, url) {
+            return Promise.resolve();
+          }
+        `;
+      }
+
+      // Mock @salesforce/resourceUrl for Storybook
+      if (id === "\0salesforce-resource-url") {
+        return "export default null;";
       }
 
       if (!filter(id)) {

@@ -309,11 +309,7 @@
 }
 
 .procrewz-button__spinner-svg {
-  animation: procrewzSpin 0.75s linear infinite;
-}
-
-.procrewz-button__spinner-circle {
-  animation: procrewzSpinDash 1.5s ease-in-out infinite;
+  animation: procrewzSpin 0.6s linear infinite;
 }
 
 /* Spinner sizes */
@@ -338,17 +334,5 @@
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes procrewzSpinDash {
-  0% {
-    stroke-dashoffset: 32;
-  }
-  50% {
-    stroke-dashoffset: 8;
-  }
-  100% {
-    stroke-dashoffset: 32;
   }
 }

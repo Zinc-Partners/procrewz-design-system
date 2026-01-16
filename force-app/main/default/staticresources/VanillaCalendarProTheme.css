@@ -1,0 +1,352 @@
+/**
+ * ProCrewz Design System - Vanilla Calendar Pro Theme Overrides
+ * These rules override the built-in "light" theme with ProCrewz design tokens.
+ * Load this CSS AFTER the Vanilla Calendar base styles.
+ */
+
+/* ================================
+   PROCREWZ DESIGN TOKEN OVERRIDES
+================================ */
+
+/* Calendar Container */
+[data-vc-theme="light"].vc {
+  background-color: var(--color-surface-default, #fcfcfd);
+  color: var(--color-text-default, #111827);
+  border-radius: var(--radius-8, 8px);
+  border: var(--border-width-1, 1px) solid var(--color-border-default, #d1d5db);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family-base);
+}
+
+[data-vc-theme="light"].vc[data-vc-input] {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Focus styles */
+[data-vc-theme="light"].vc [tabindex="0"]:focus-visible,
+[data-vc-theme="light"].vc button:focus-visible,
+[data-vc-theme="light"].vc:focus-visible {
+  outline-color: var(--color-focus-ring, #5a4295);
+  outline-offset: 2px;
+}
+
+/* Arrow buttons */
+[data-vc-theme="light"] .vc-arrow {
+  background-color: transparent;
+}
+
+[data-vc-theme="light"] .vc-arrow:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%235a4295' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/%3E%3C/svg%3E");
+}
+
+[data-vc-theme="light"] .vc-arrow:hover:before {
+  opacity: 0.7;
+}
+
+/* Header content - Month and Year buttons */
+[data-vc-theme="light"] .vc-header__content,
+[data-vc-theme="light"] .vc-month,
+[data-vc-theme="light"] .vc-year {
+  color: var(--color-text-default, #111827);
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+[data-vc-theme="light"] .vc-month:disabled,
+[data-vc-theme="light"] .vc-year:disabled {
+  color: var(--color-state-disabled, #9ca3af);
+}
+
+[data-vc-theme="light"] .vc-month:hover,
+[data-vc-theme="light"] .vc-year:hover {
+  color: var(--color-brand-primary, #5a4295);
+}
+
+/* Month/Year selection grid */
+[data-vc-theme="light"] .vc-months__month,
+[data-vc-theme="light"] .vc-years__year {
+  background-color: var(--color-surface-default, #fcfcfd);
+  color: var(--color-text-muted, #4b5563);
+  border-radius: var(--radius-6, 6px);
+}
+
+[data-vc-theme="light"] .vc-months__month:disabled,
+[data-vc-theme="light"] .vc-years__year:disabled {
+  color: var(--color-state-disabled, #9ca3af);
+}
+
+[data-vc-theme="light"] .vc-months__month:hover,
+[data-vc-theme="light"] .vc-years__year:hover {
+  background-color: var(--color-background-subtle, #f9fafb);
+}
+
+/* Selected month/year */
+[data-vc-theme="light"] .vc-months__month[data-vc-months-month-selected],
+[data-vc-theme="light"] .vc-years__year[data-vc-years-year-selected] {
+  background-color: var(--color-brand-primary, #5a4295);
+  color: var(--color-text-inverse, #fff);
+}
+
+[data-vc-theme="light"] .vc-months__month[data-vc-months-month-selected]:hover,
+[data-vc-theme="light"] .vc-years__year[data-vc-years-year-selected]:hover {
+  background-color: var(--color-primary-hover, #423070);
+}
+
+/* Week day headers */
+[data-vc-theme="light"] .vc-week__day {
+  color: var(--color-text-muted, #4b5563);
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+[data-vc-theme="light"] button.vc-week__day:hover {
+  color: var(--color-text-default, #111827);
+}
+
+/* Weekend indicator in week header */
+[data-vc-theme="light"] .vc-week__day[data-vc-week-day-off] {
+  color: var(--color-text-muted, #6b7280);
+}
+
+[data-vc-theme="light"] button.vc-week__day[data-vc-week-day-off]:hover {
+  color: var(--color-text-default, #111827);
+}
+
+/* Week numbers */
+[data-vc-theme="light"] .vc-week-number,
+[data-vc-theme="light"] .vc-week-numbers__title {
+  color: var(--color-text-muted, #4b5563);
+}
+
+[data-vc-theme="light"] .vc-week-number:hover {
+  color: var(--color-text-default, #111827);
+}
+
+/* Date buttons - default state */
+[data-vc-theme="light"] .vc-date__btn {
+  background-color: var(--color-surface-default, #fcfcfd);
+  color: var(--color-text-default, #111827);
+  border-radius: var(--radius-6, 6px);
+}
+
+[data-vc-theme="light"] .vc-date__btn:hover {
+  background-color: rgba(90, 66, 149, 0.15); /* 15% brand purple */
+}
+
+/* Today indicator */
+[data-vc-theme="light"] .vc-date[data-vc-date-today] .vc-date__btn {
+  background-color: var(--color-background-brand, #f1f0f8);
+  color: var(--color-brand-primary, #5a4295);
+  font-weight: var(--font-weight-bold, 700);
+}
+
+[data-vc-theme="light"] .vc-date[data-vc-date-today] .vc-date__btn:hover {
+  background-color: var(--color-background-brand, #f1f0f8);
+}
+
+/* Dates from prev/next months */
+[data-vc-theme="light"] .vc-date[data-vc-date-month="next"] .vc-date__btn,
+[data-vc-theme="light"] .vc-date[data-vc-date-month="prev"] .vc-date__btn {
+  color: var(--color-text-placeholder, #6b7280);
+}
+
+/* Disabled dates */
+[data-vc-theme="light"] .vc-date[data-vc-date-disabled] .vc-date__btn {
+  color: var(--color-state-disabled, #9ca3af);
+  opacity: var(--opacity-disabled, 0.5);
+}
+
+/* Hover state for date range selection */
+[data-vc-theme="light"] .vc-date[data-vc-date-hover] .vc-date__btn {
+  background-color: rgba(90, 66, 149, 0.15); /* 15% brand purple */
+}
+
+[data-vc-theme="light"] .vc-date[data-vc-date-hover="first"] .vc-date__btn,
+[data-vc-theme="light"] .vc-date[data-vc-date-hover="last"] .vc-date__btn {
+  background-color: rgba(90, 66, 149, 0.2); /* 20% brand purple for range edges */
+}
+
+/* Weekend dates - override red color from default theme */
+/* Weekend dates - use brand purple hover like all other dates */
+[data-vc-theme="light"] .vc-date[data-vc-date-weekend] .vc-date__btn,
+[data-vc-theme="light"] .vc-date[data-vc-date-holiday] .vc-date__btn {
+  color: var(--color-text-muted, #6b7280);
+}
+
+[data-vc-theme="light"] .vc-date[data-vc-date-weekend] .vc-date__btn:hover,
+[data-vc-theme="light"] .vc-date[data-vc-date-holiday] .vc-date__btn:hover {
+  background-color: rgba(90, 66, 149, 0.15) !important; /* 15% brand purple */
+  color: var(--color-text-default, #111827);
+}
+
+/* Override media query hover states for weekends - use brand purple */
+@media (hover: hover) and (pointer: fine) {
+  [data-vc-theme="light"] .vc-date[data-vc-date-weekend] .vc-date__btn:hover,
+  [data-vc-theme="light"] .vc-date[data-vc-date-holiday] .vc-date__btn:hover {
+    background-color: rgba(90, 66, 149, 0.15) !important; /* 15% brand purple */
+    color: var(--color-text-default, #111827);
+  }
+  
+  [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-hover] .vc-date__btn,
+  [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-hover] .vc-date__btn {
+    background-color: rgba(90, 66, 149, 0.15) !important; /* 15% brand purple */
+  }
+  
+  [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-hover="first"] .vc-date__btn,
+  [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-hover="last"] .vc-date__btn,
+  [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-hover="first"] .vc-date__btn,
+  [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-hover="last"] .vc-date__btn {
+    background-color: rgba(90, 66, 149, 0.2) !important; /* 20% brand purple for range edges */
+  }
+}
+
+/* Selected date - PRIMARY BRAND COLOR */
+[data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn {
+  background-color: var(--color-brand-primary, #5a4295);
+  color: var(--color-text-inverse, #fff);
+}
+
+[data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn:hover {
+  background-color: var(--color-primary-hover, #423070);
+}
+
+/* Selected range - middle dates */
+[data-vc-theme="light"] .vc-date[data-vc-date-selected="middle"] .vc-date__btn {
+  background-color: var(--color-background-brand, #f1f0f8);
+  color: var(--color-brand-primary, #5a4295);
+}
+
+[data-vc-theme="light"] .vc-date[data-vc-date-selected="middle"] .vc-date__btn:hover {
+  background-color: var(--color-background-brand, #f1f0f8);
+}
+
+/* Selected weekend/holiday dates - use brand color like regular selected dates */
+[data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
+[data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn {
+  background-color: var(--color-brand-primary, #5a4295);
+  color: var(--color-text-inverse, #fff);
+}
+
+[data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
+[data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
+  background-color: var(--color-primary-hover, #423070) !important;
+  color: var(--color-text-inverse, #fff);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
+  [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
+    background-color: var(--color-primary-hover, #423070) !important;
+    color: var(--color-text-inverse, #fff);
+  }
+}
+
+/* Date popup tooltip */
+[data-vc-theme="light"] .vc-date__popup {
+  background-color: var(--color-surface-raised, #fcfcfd);
+  color: var(--color-text-default, #111827);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-6, 6px);
+}
+
+/* Date range tooltip */
+[data-vc-theme="light"] .vc-date-range-tooltip {
+  background-color: var(--color-surface-raised, #fcfcfd);
+  color: var(--color-text-muted, #4b5563);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-4, 4px);
+}
+
+/* Time picker section */
+[data-vc-theme="light"] .vc-time {
+  border-color: var(--color-border-subtle, #e5e7eb);
+}
+
+[data-vc-theme="light"] .vc-time__hour:after,
+[data-vc-theme="light"] .vc-time__minute:after {
+  color: var(--color-text-default, #111827);
+}
+
+[data-vc-theme="light"] .vc-time__hour input,
+[data-vc-theme="light"] .vc-time__minute input {
+  background-color: var(--color-surface-default, #fcfcfd);
+  color: var(--color-text-default, #111827);
+  border-radius: var(--radius-4, 4px);
+}
+
+[data-vc-theme="light"] .vc-time__hour input:focus-visible,
+[data-vc-theme="light"] .vc-time__minute input:focus-visible {
+  outline-color: var(--color-focus-ring, #5a4295);
+}
+
+[data-vc-theme="light"] .vc-time__hour input:hover,
+[data-vc-theme="light"] .vc-time__minute input:hover {
+  background-color: var(--color-background-brand, #f1f0f8);
+}
+
+[data-vc-theme="light"] .vc-time__hour input[data-vc-input-focus],
+[data-vc-theme="light"] .vc-time__minute input[data-vc-input-focus] {
+  background-color: var(--color-background-brand, #f1f0f8);
+}
+
+/* AM/PM button */
+[data-vc-theme="light"] .vc-time__keeping {
+  color: var(--color-text-muted, #4b5563);
+}
+
+[data-vc-theme="light"] .vc-time__keeping:focus-visible {
+  outline-color: var(--color-focus-ring, #5a4295);
+}
+
+[data-vc-theme="light"] .vc-time__keeping:hover {
+  background-color: var(--color-background-brand, #f1f0f8);
+  color: var(--color-brand-primary, #5a4295);
+}
+
+/* Time range sliders */
+[data-vc-theme="light"] .vc-time__range input {
+  background-color: var(--color-surface-default, #fcfcfd);
+}
+
+[data-vc-theme="light"] .vc-time__range:after,
+[data-vc-theme="light"] .vc-time__range:before {
+  background-color: var(--color-border-default, #d1d5db);
+}
+
+[data-vc-theme="light"] .vc-time__range:hover input::-webkit-slider-thumb {
+  border-color: var(--color-brand-primary, #5a4295);
+}
+
+[data-vc-theme="light"] .vc-time__range:hover input::-moz-range-thumb {
+  border-color: var(--color-brand-primary, #5a4295);
+}
+
+[data-vc-theme="light"] .vc-time__range input:focus-visible::-webkit-slider-thumb {
+  border-color: var(--color-focus-ring, #5a4295);
+}
+
+[data-vc-theme="light"] .vc-time__range input:focus-visible::-moz-range-thumb {
+  border-color: var(--color-focus-ring, #5a4295);
+}
+
+[data-vc-theme="light"] .vc-time__range input::-webkit-slider-thumb {
+  border-color: var(--color-border-default, #d1d5db);
+  background-color: var(--color-surface-default, #fcfcfd);
+}
+
+[data-vc-theme="light"] .vc-time__range input::-moz-range-thumb {
+  border-color: var(--color-border-default, #d1d5db);
+  background-color: var(--color-surface-default, #fcfcfd);
+}
+
+[data-vc-theme="light"] .vc-time__range input::-webkit-slider-runnable-track {
+  background-color: var(--color-border-default, #d1d5db);
+}
+
+[data-vc-theme="light"] .vc-time__range input::-moz-range-track {
+  background-color: var(--color-border-default, #d1d5db);
+}
+
+/* Modal variant adjustments */
+[data-vc-theme="light"].vc.modal {
+  z-index: 9999;
+}
+

@@ -160,10 +160,23 @@
         </div>
 
         <!-- Modal -->
-        <c-procrewz-button
-          label="Open Modal"
-          onclick={handleOpenModal}
-        ></c-procrewz-button>
+        <div class="row-container">
+          <c-procrewz-button
+            label="Open Modal"
+            onclick={handleOpenModal}
+          ></c-procrewz-button>
+
+          <!-- Calendar -->
+          <c-procrewz-calendar
+            selection-mode="multiple-ranged"
+            ondateschange={handleRangeChange}
+          ></c-procrewz-calendar>
+
+          <c-procrewz-calendar
+            selection-mode="single"
+            first-weekday="0"
+          ></c-procrewz-calendar>
+        </div>
       </div>
 
       <c-procrewz-modal

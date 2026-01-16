@@ -11,6 +11,7 @@
 import ProcrewzButton from "c/procrewzButton";
 import ProcrewzModal from "c/procrewzModal";
 import ProcrewzInput from "c/procrewzInput";
+import ProcrewzCalendar from "c/procrewzCalendar";
 
 // Helper function to register components
 export function registerLWC() {
@@ -25,4 +26,5 @@ export function registerLWC() {
   buildAndRegisterCustomElement("c-procrewz-button", ProcrewzButton);
   buildAndRegisterCustomElement("c-procrewz-modal", ProcrewzModal);
   buildAndRegisterCustomElement("c-procrewz-input", ProcrewzInput);
+  buildAndRegisterCustomElement("c-procrewz-calendar", ProcrewzCalendar);
 }

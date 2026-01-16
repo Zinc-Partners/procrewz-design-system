@@ -57,5 +57,8 @@
     "**/lwc/**": [
       "sfdx-lwc-jest -- --bail --findRelatedTests --passWithNoTests"
     ]
+  },
+  "dependencies": {
+    "vanilla-calendar-pro": "^3.1.0"
   }
 }

@@ -204,7 +204,7 @@ function lwcPlugin(config = {}) {
       }
     },
 
-    load(id, options) {
+    load(id) {
       // Handle empty scoped CSS virtual module
       if (id === "\0empty-scoped-css") {
         return "export default [];";
@@ -241,7 +241,7 @@ function lwcPlugin(config = {}) {
       }
     },
 
-    transform(code, id, options) {
+    transform(code, id) {
       if (!filter(id)) {
         return null;
       }

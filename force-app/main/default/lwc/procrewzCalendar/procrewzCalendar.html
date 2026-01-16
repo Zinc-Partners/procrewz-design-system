@@ -1,0 +1,29 @@
+<template>
+  <c-theme-provider>
+    <div class={containerClass}>
+      <!-- Loading State -->
+      <template lwc:if={showLoading}>
+        <div class="procrewz-calendar__loading" aria-live="polite">
+          <span class="procrewz-calendar__spinner"></span>
+          <span class="sr-only">Loading calendar...</span>
+        </div>
+      </template>
+
+      <!-- Error State -->
+      <template lwc:if={showError}>
+        <div class="procrewz-calendar__error" role="alert">
+          <span>{errorMessage}</span>
+        </div>
+      </template>
+
+      <!-- Calendar Container -->
+      <template lwc:if={isCalendarLoaded}>
+        <div
+          class="calendar-container"
+          role="application"
+          aria-label="Date picker calendar"
+        ></div>
+      </template>
+    </div>
+  </c-theme-provider>
+</template>

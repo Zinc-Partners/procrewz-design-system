@@ -200,42 +200,73 @@
 
 /* Selected date - PRIMARY BRAND COLOR */
 [data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn {
-  background-color: var(--color-brand-primary, #5a4295);
-  color: var(--color-text-inverse, #fff);
+  background-color: var(--color-brand-primary, #5a4295) !important;
+  color: var(--color-text-inverse, #fff) !important;
 }
 
 [data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn:hover {
-  background-color: var(--color-primary-hover, #423070);
+  background-color: var(--color-primary-hover, #423070) !important;
+  color: var(--color-text-inverse, #fff) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn:hover {
+    background-color: var(--color-primary-hover, #423070) !important;
+    color: var(--color-text-inverse, #fff) !important;
+  }
 }
 
 /* Selected range - middle dates */
 [data-vc-theme="light"] .vc-date[data-vc-date-selected="middle"] .vc-date__btn {
-  background-color: var(--color-background-brand, #f1f0f8);
-  color: var(--color-brand-primary, #5a4295);
+  background-color: rgba(90, 66, 149, 0.15) !important;
+  color: var(--color-brand-primary, #5a4295) !important;
 }
 
 [data-vc-theme="light"] .vc-date[data-vc-date-selected="middle"] .vc-date__btn:hover {
-  background-color: var(--color-background-brand, #f1f0f8);
+  background-color: rgba(90, 66, 149, 0.2) !important;
+  color: var(--color-brand-primary, #5a4295) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-vc-theme="light"] .vc-date[data-vc-date-selected="middle"] .vc-date__btn:hover {
+    background-color: rgba(90, 66, 149, 0.2) !important;
+    color: var(--color-brand-primary, #5a4295) !important;
+  }
 }
 
 /* Selected weekend/holiday dates - use brand color like regular selected dates */
 [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
 [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn {
-  background-color: var(--color-brand-primary, #5a4295);
-  color: var(--color-text-inverse, #fff);
+  background-color: var(--color-brand-primary, #5a4295) !important;
+  color: var(--color-text-inverse, #fff) !important;
 }
 
 [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
 [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
   background-color: var(--color-primary-hover, #423070) !important;
-  color: var(--color-text-inverse, #fff);
+  color: var(--color-text-inverse, #fff) !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
   [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
   [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
     background-color: var(--color-primary-hover, #423070) !important;
-    color: var(--color-text-inverse, #fff);
+    color: var(--color-text-inverse, #fff) !important;
+  }
+}
+
+/* Selected weekend/holiday in middle of range */
+[data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected="middle"] .vc-date__btn,
+[data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected="middle"] .vc-date__btn {
+  background-color: rgba(90, 66, 149, 0.15) !important;
+  color: var(--color-brand-primary, #5a4295) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected="middle"] .vc-date__btn:hover,
+  [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected="middle"] .vc-date__btn:hover {
+    background-color: rgba(90, 66, 149, 0.2) !important;
+    color: var(--color-brand-primary, #5a4295) !important;
   }
 }
 

@@ -6,7 +6,10 @@
         <label class={labelClass} for="input-field">
           {label}
           <template lwc:if={required}>
-            <span class="procrewz-input-required">{requiredIndicator}</span>
+            <span class="procrewz-input-required" aria-hidden="true"
+              >{requiredIndicator}</span
+            >
+            <span class="sr-only">(required)</span>
           </template>
         </label>
       </template>
@@ -93,7 +96,7 @@
             </button>
           </template>
           <template lwc:else>
-            <span class="procrewz-input-icon">
+            <span class="procrewz-input-icon" aria-hidden="true">
               <!-- Search Icon -->
               <template lwc:if={isSearchIcon}>
                 <svg
@@ -265,16 +268,29 @@
 
         <!-- Time Picker Dropdown -->
         <template lwc:if={showTimePicker}>
-          <div class={timePickerClass} onclick={handleTimePickerClick}>
+          <div
+            class={timePickerClass}
+            role="dialog"
+            aria-label="Time picker"
+            onclick={handleTimePickerClick}
+          >
             <!-- Columns Container -->
             <div class="procrewz-time-picker__columns">
               <!-- Hours Column -->
-              <div class="procrewz-time-picker__column" data-column="hour">
+              <div
+                class="procrewz-time-picker__column"
+                data-column="hour"
+                role="listbox"
+                aria-label="Hours"
+              >
                 <template for:each={hours} for:item="hour">
                   <button
                     key={hour.value}
                     type="button"
+                    role="option"
                     class={hour.class}
+                    aria-selected={hour.selected}
+                    aria-label={hour.ariaLabel}
                     data-type="hour"
                     data-value={hour.value}
                     onclick={handleTimeSelection}
@@ -285,12 +301,20 @@
               </div>
 
               <!-- Minutes Column -->
-              <div class="procrewz-time-picker__column" data-column="minute">
+              <div
+                class="procrewz-time-picker__column"
+                data-column="minute"
+                role="listbox"
+                aria-label="Minutes"
+              >
                 <template for:each={minutes} for:item="minute">
                   <button
                     key={minute.value}
                     type="button"
+                    role="option"
                     class={minute.class}
+                    aria-selected={minute.selected}
+                    aria-label={minute.ariaLabel}
                     data-type="minute"
                     data-value={minute.value}
                     onclick={handleTimeSelection}
@@ -302,12 +326,20 @@
 
               <!-- Seconds Column (optional) -->
               <template lwc:if={showSeconds}>
-                <div class="procrewz-time-picker__column" data-column="second">
+                <div
+                  class="procrewz-time-picker__column"
+                  data-column="second"
+                  role="listbox"
+                  aria-label="Seconds"
+                >
                   <template for:each={seconds} for:item="second">
                     <button
                       key={second.value}
                       type="button"
+                      role="option"
                       class={second.class}
+                      aria-selected={second.selected}
+                      aria-label={second.ariaLabel}
                       data-type="second"
                       data-value={second.value}
                       onclick={handleTimeSelection}
@@ -321,10 +353,14 @@
               <!-- AM/PM Column -->
               <div
                 class="procrewz-time-picker__column procrewz-time-picker__column--period"
+                role="listbox"
+                aria-label="AM or PM"
               >
                 <button
                   type="button"
+                  role="option"
                   class={amClass}
+                  aria-selected={isAMSelected}
                   data-type="period"
                   data-value="AM"
                   onclick={handleTimeSelection}
@@ -333,7 +369,9 @@
                 </button>
                 <button
                   type="button"
+                  role="option"
                   class={pmClass}
+                  aria-selected={isPMSelected}
                   data-type="period"
                   data-value="PM"
                   onclick={handleTimeSelection}

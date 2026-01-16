@@ -9,6 +9,7 @@ export default class ProcrewzButton extends LightningElement {
   @api iconUrl = ""; // URL to icon (static resource)
   @api iconPosition = "left"; // left, right
   @api loading = false;
+  @api ariaLabel = ""; // Explicit aria-label for icon-only buttons
 
   _fullWidth = false;
 
@@ -66,6 +67,20 @@ export default class ProcrewzButton extends LightningElement {
 
   get isDisabled() {
     return this.disabled || this.loading;
+  }
+
+  // Computed aria-label: use explicit ariaLabel, or label, or null for icon-only without label
+  get computedAriaLabel() {
+    // If explicit aria-label is provided, use it
+    if (this.ariaLabel) {
+      return this.ariaLabel;
+    }
+    // If no visible label but has icon, warn about missing aria-label
+    // Return null to not override the visible label
+    if (!this.label && this.hasIcon) {
+      return "Button"; // Fallback for icon-only buttons without aria-label
+    }
+    return null; // Let the visible label be the accessible name
   }
 
   get iconSize() {

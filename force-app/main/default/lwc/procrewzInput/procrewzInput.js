@@ -1,6 +1,6 @@
 import { LightningElement, api, track } from "lwc";
 import { loadScript } from "lightning/platformResourceLoader";
-import CLEAVE_JS from "@salesforce/resourceUrl/cleaveJs";
+import CLEAVE_JS from "@salesforce/resourceUrl/cleave";
 
 export default class ProcrewzInput extends LightningElement {
   // Core Properties
@@ -768,23 +768,27 @@ export default class ProcrewzInput extends LightningElement {
     const hoursList = [];
 
     // Start with 12, then 1-11
+    const isSelected = this.selectedHour === 12;
     hoursList.push({
       value: 12,
       label: "12",
-      class:
-        this.selectedHour === 12
-          ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
-          : "procrewz-time-picker__item"
+      selected: isSelected,
+      ariaLabel: "12 o'clock",
+      class: isSelected
+        ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
+        : "procrewz-time-picker__item"
     });
 
     for (let i = 1; i <= 11; i++) {
+      const selected = this.selectedHour === i;
       hoursList.push({
         value: i,
         label: String(i),
-        class:
-          this.selectedHour === i
-            ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
-            : "procrewz-time-picker__item"
+        selected: selected,
+        ariaLabel: `${i} o'clock`,
+        class: selected
+          ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
+          : "procrewz-time-picker__item"
       });
     }
     return hoursList;
@@ -795,13 +799,15 @@ export default class ProcrewzInput extends LightningElement {
     const step = parseInt(this.minuteStep, 10) || 1;
 
     for (let i = 0; i < 60; i += step) {
+      const selected = this.selectedMinute === i;
       minutesList.push({
         value: i,
         label: String(i).padStart(2, "0"),
-        class:
-          this.selectedMinute === i
-            ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
-            : "procrewz-time-picker__item"
+        selected: selected,
+        ariaLabel: `${i} minutes`,
+        class: selected
+          ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
+          : "procrewz-time-picker__item"
       });
     }
     return minutesList;
@@ -810,16 +816,26 @@ export default class ProcrewzInput extends LightningElement {
   get seconds() {
     const secondsList = [];
     for (let i = 0; i < 60; i++) {
+      const selected = this.selectedSecond === i;
       secondsList.push({
         value: i,
         label: String(i).padStart(2, "0"),
-        class:
-          this.selectedSecond === i
-            ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
-            : "procrewz-time-picker__item"
+        selected: selected,
+        ariaLabel: `${i} seconds`,
+        class: selected
+          ? "procrewz-time-picker__item procrewz-time-picker__item--selected"
+          : "procrewz-time-picker__item"
       });
     }
     return secondsList;
+  }
+
+  get isAMSelected() {
+    return this.selectedPeriod === "AM";
+  }
+
+  get isPMSelected() {
+    return this.selectedPeriod === "PM";
   }
 
   get amClass() {

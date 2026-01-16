@@ -1,5 +1,5 @@
 // Load Cleave.js synchronously before LWC components (sets window.Cleave)
-import "../force-app/main/default/staticresources/cleaveJs.js";
+import "../force-app/main/default/staticresources/cleave.js";
 
 import { registerLWC } from "../stories/index.js";
 

@@ -1,27 +1,208 @@
 <template>
-  <c-procrewz-button
-    label="Open Modal"
-    onclick={handleOpenModal}
-  ></c-procrewz-button>
+  <c-theme-provider>
+    <div class="container">
+      <div class="content">
+        <!-- Form -->
 
-  <c-procrewz-modal
-    title="Confirm Action"
-    size="small"
-    onclose={handleModalClose}
-  >
-    <p>Are you sure you want to continue?</p>
+        <div class="form-grid">
+          <div class="form-wrapper">
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+              <img
+                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                alt="Your Company"
+                class="logo"
+              />
+              <h2>Sign in to your account</h2>
+            </div>
 
-    <div slot="footer">
-      <c-procrewz-button
-        label="Cancel"
-        variant="secondary"
-        onclick={handleCancel}
-      ></c-procrewz-button>
-      <c-procrewz-button
-        label="Confirm"
-        variant="primary"
-        onclick={handleConfirm}
-      ></c-procrewz-button>
+            <div>
+              <form action="#" method="POST">
+                <div>
+                  <div class="field">
+                    <c-procrewz-input
+                      label="Email"
+                      type="email"
+                    ></c-procrewz-input>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="field">
+                    <c-procrewz-input
+                      label="Password"
+                      type="password"
+                    ></c-procrewz-input>
+                    <div class="password-row">
+                      <a href="#" class="link">Forgot password?</a>
+                    </div>
+                  </div>
+                </div>
+
+                <c-procrewz-button
+                  label="Sign In"
+                  onclick={handleOpenModal}
+                  type="submit"
+                  full-width="true"
+                ></c-procrewz-button>
+              </form>
+
+              <p class="footer-text">
+                Not a member?
+                <a href="#" class="link">Start a 14 day free trial</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="form-wrapper-dark">
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+              <img
+                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                alt="Your Company"
+                class="logo"
+              />
+              <h2 class="text-on-dark">Sign in to your account</h2>
+            </div>
+
+            <div>
+              <form action="#" method="POST">
+                <div>
+                  <div class="field">
+                    <c-procrewz-input
+                      palceholder="email@gmail.com"
+                      label="Email"
+                      type="email"
+                      variant="dark"
+                    ></c-procrewz-input>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="field">
+                    <c-procrewz-input
+                      label="Password"
+                      type="password"
+                      variant="dark"
+                    ></c-procrewz-input>
+                    <div class="password-row">
+                      <a href="#" class="link-on-dark">Forgot password?</a>
+                    </div>
+                  </div>
+                </div>
+
+                <c-procrewz-button
+                  label="Sign In"
+                  onclick={handleOpenModal}
+                  type="submit"
+                  full-width="true"
+                  variant="secondary"
+                ></c-procrewz-button>
+              </form>
+
+              <p class="footer-text">
+                Not a member?
+                <a href="#" class="link-on-dark">Start a 14 day free trial</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="form-wrapper">
+            <h2>Enter Event Details</h2>
+            <form action="#" method="POST">
+              <div>
+                <div class="row-container">
+                  <c-procrewz-input
+                    placeholder="12/10/2026"
+                    label="Start Date"
+                    type="date"
+                  ></c-procrewz-input>
+                  <c-procrewz-input
+                    placeholder="12/10/2026"
+                    label="End Date"
+                    type="date"
+                  ></c-procrewz-input>
+                </div>
+
+                <div class="row-container">
+                  <c-procrewz-input
+                    placeholder="12:30 PM"
+                    label="Start Time"
+                    type="time"
+                  ></c-procrewz-input>
+                  <c-procrewz-input
+                    placeholder="12:30 PM"
+                    label="End Time"
+                    type="time"
+                  ></c-procrewz-input>
+                </div>
+
+                <div class="row-container">
+                  <c-procrewz-input
+                    label="Amount"
+                    prefix="$"
+                    type="currency"
+                  ></c-procrewz-input>
+                  <c-procrewz-input
+                    placeholder="(317) 555-1234"
+                    label="Phone"
+                    type="tel"
+                  ></c-procrewz-input>
+                </div>
+              </div>
+
+              <c-procrewz-button
+                label="Submit"
+                onclick={handleOpenModal}
+                type="submit"
+                full-width="true"
+              ></c-procrewz-button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <c-procrewz-button
+          label="Open Modal"
+          onclick={handleOpenModal}
+        ></c-procrewz-button>
+      </div>
+
+      <c-procrewz-modal
+        title="Confirm Action"
+        size="medium"
+        onclose={handleModalClose}
+      >
+        <p>Are you sure you want to continue?</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+
+        <div slot="footer">
+          <div class="modal-footer">
+            <c-procrewz-button
+              label="Cancel"
+              variant="secondary"
+              onclick={handleCancel}
+            ></c-procrewz-button>
+            <c-procrewz-button
+              label="Confirm"
+              variant="primary"
+              onclick={handleConfirm}
+            ></c-procrewz-button>
+          </div>
+        </div>
+      </c-procrewz-modal>
     </div>
-  </c-procrewz-modal>
+  </c-theme-provider>
 </template>

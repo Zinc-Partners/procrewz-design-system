@@ -20,8 +20,8 @@
 .procrewz-input-container {
   display: flex;
   flex-direction: column;
-  width: var(--size-width-100);
-  gap: var(--size-spacing-3xs, 4px);
+  width: 100%;
+  gap: var(--space-4, 4px);
 }
 
 /* ================================
@@ -30,11 +30,11 @@
 
 .procrewz-input-label {
   display: block;
-  font-family: var(--font-family-base);
-  font-size: var(--size-font-xs, 0.75rem);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-caption, 0.75rem);
   font-weight: var(--font-weight-medium, 500);
-  color: var(--color-text-label, #374151);
-  line-height: var(--size-line-height-text, 1.5);
+  color: var(--text-color-label, #374151);
+  line-height: var(--line-height-text, 1.5);
 }
 
 .procrewz-input-required {
@@ -50,10 +50,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: var(--size-width-100);
+  width: 100%;
   min-width: 0;
   background-color: transparent;
-  border: 1px solid var(--component-input-border-color-default, #e5e7eb);
+  border: 1px solid var(--input-border-color-default, #e5e7eb);
   border-radius: var(--radius-6, 6px);
   box-shadow: var(--shadow-xs, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
   transition:
@@ -66,14 +66,14 @@
 .procrewz-input-wrapper:hover:not(.procrewz-input-wrapper--disabled):not(
     .procrewz-input-wrapper--focused
   ) {
-  border-color: var(--component-input-border-color-hover, #d1d5db);
+  border-color: var(--input-border-color-hover, #d1d5db);
 }
 
 /* Focus State */
 .procrewz-input-wrapper--focused {
   border-color: var(--color-focus-ring, #5a4295);
   box-shadow:
-    0 0 0 2px var(--color-surface-default, #fff),
+    0 0 0 2px var(--surface-color-default, #fff),
     0 0 0 4px var(--color-focus-ring, #5a4295);
 }
 
@@ -87,14 +87,14 @@
 
 .procrewz-input-wrapper--error.procrewz-input-wrapper--focused {
   box-shadow:
-    0 0 0 2px var(--color-surface-default, #fff),
+    0 0 0 2px var(--surface-color-default, #fff),
     0 0 0 4px var(--color-status-error-icon, #dc2626);
 }
 
 /* Disabled State */
 .procrewz-input-wrapper--disabled {
-  background-color: var(--component-input-background-disabled, #f9fafb);
-  border-color: var(--component-input-border-color-disabled, #e5e7eb);
+  background-color: var(--input-background-disabled, #f9fafb);
+  border-color: var(--input-border-color-disabled, #e5e7eb);
   cursor: not-allowed;
   pointer-events: none;
   opacity: var(--opacity-disabled, 0.5);
@@ -106,31 +106,32 @@
 
 .procrewz-input {
   flex: 1;
-  width: var(--size-width-100);
+  width: 100%;
   min-width: 0;
   border: none;
   background: transparent;
-  font-family: var(--font-family-base);
-  font-size: var(--size-font-sm, 0.875rem);
-  line-height: var(--size-line-height-input, 1.25);
-  color: var(--component-input-text-color-default, #111827);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-caption, 0.75rem);
+  line-height: var(--line-height-input, 1.25);
+  color: var(--input-text-color-default, #111827);
   outline: none;
   caret-color: var(--color-brand-primary, #5a4295);
 }
 
 .procrewz-input::placeholder {
-  /* color: var(--color-text-placeholder #6b7280); */
-  color: var(--color-text-placeholder #6b7280);
+  /* color: var(--text-color-placeholder #6b7280); */
+  color: var(--border-color-strong, #6b7280);
+  font-size: var(--font-size-caption);
   opacity: 1;
 }
 
 .procrewz-input::selection {
   background-color: var(--color-brand-primary, #5a4295);
-  color: var(--color-text-inverse, #fff);
+  color: var(--text-color-inverse, #fff);
 }
 
 .procrewz-input:disabled {
-  color: var(--component-input-text-color-disabled, #9ca3af);
+  color: var(--input-text-color-disabled, #9ca3af);
   cursor: not-allowed;
 }
 
@@ -157,20 +158,20 @@
 
 /* Small: h-8 (32px) */
 .procrewz-input-wrapper--sm {
-  height: var(--size-control-sm, 32px);
+  height: var(--control-height-sm, 32px);
 }
 
 .procrewz-input-wrapper--sm .procrewz-input {
-  padding: var(--size-spacing-3xs, 4px) var(--size-spacing-xs, 10px);
-  font-size: var(--size-font-xs, 0.75rem);
+  padding: var(--space-4, 4px) var(--space-10, 10px);
+  font-size: var(--font-size-caption, 0.75rem);
 }
 
 .procrewz-input-wrapper--sm .procrewz-input--has-prefix {
-  padding-left: var(--size-spacing-3xs, 4px);
+  padding-left: var(--space-4, 4px);
 }
 
 .procrewz-input-wrapper--sm .procrewz-input--has-suffix {
-  padding-right: var(--size-spacing-3xs, 4px);
+  padding-right: var(--space-4, 4px);
 }
 
 /* Medium: h-9 (36px) - Default */
@@ -179,34 +180,34 @@
 }
 
 .procrewz-input-wrapper--md .procrewz-input {
-  padding: var(--size-spacing-3xs, 4px) var(--size-spacing-sm, 12px);
-  font-size: var(--size-font-sm, 0.875rem);
+  padding: var(--space-4, 4px) var(--space-12, 12px);
+  font-size: var(--font-size-caption, 0.75rem);
 }
 
 .procrewz-input-wrapper--md .procrewz-input--has-prefix {
-  padding-left: var(--size-spacing-3xs, 4px);
+  padding-left: var(--space-4, 4px);
 }
 
 .procrewz-input-wrapper--md .procrewz-input--has-suffix {
-  padding-right: var(--size-spacing-3xs, 4px);
+  padding-right: var(--space-4, 4px);
 }
 
 /* Large: h-10 (40px) */
 .procrewz-input-wrapper--lg {
-  height: var(--size-control-md, 40px);
+  height: var(--control-height-md, 40px);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input {
-  padding: var(--size-spacing-3xs, 4px) var(--size-spacing-md, 14px);
-  font-size: var(--size-font-sm, 0.875rem);
+  padding: var(--space-4, 4px) var(--space-16, 14px);
+  font-size: var(--font-size-body-sm, 0.875rem);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input--has-prefix {
-  padding-left: var(--size-spacing-3xs, 4px);
+  padding-left: var(--space-4, 4px);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input--has-suffix {
-  padding-right: var(--size-spacing-3xs, 4px);
+  padding-right: var(--space-4, 4px);
 }
 
 /* ================================
@@ -219,45 +220,45 @@
   align-items: center;
   flex-shrink: 0;
   white-space: nowrap;
-  color: var(--color-text-muted, #6b7280);
-  font-family: var(--font-family-base);
-  font-size: var(--size-font-sm, 0.875rem);
+  color: var(--text-color-muted, #6b7280);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-sm, 0.875rem);
   line-height: 1;
   user-select: none;
   pointer-events: none;
 }
 
 .procrewz-input-prefix {
-  padding-left: var(--size-spacing-sm, 12px);
-  padding-right: var(--size-spacing-2xs, 8px);
+  padding-left: var(--space-12, 12px);
+  padding-right: var(--space-8, 8px);
 }
 
 .procrewz-input-suffix {
-  padding-left: var(--size-spacing-2xs, 8px);
-  padding-right: var(--size-spacing-sm, 12px);
+  padding-left: var(--space-8, 8px);
+  padding-right: var(--space-12, 12px);
 }
 
 /* Size-specific prefix/suffix */
 .procrewz-input-wrapper--sm .procrewz-input-prefix {
-  padding-left: var(--size-spacing-xs, 10px);
-  padding-right: var(--size-spacing-3xs, 4px);
-  font-size: var(--size-font-xs, 0.75rem);
+  padding-left: var(--space-10, 10px);
+  padding-right: var(--space-4, 4px);
+  font-size: var(--font-size-caption, 0.75rem);
 }
 
 .procrewz-input-wrapper--sm .procrewz-input-suffix {
-  padding-left: var(--size-spacing-3xs, 4px);
-  padding-right: var(--size-spacing-xs, 10px);
-  font-size: var(--size-font-xs, 0.75rem);
+  padding-left: var(--space-4, 4px);
+  padding-right: var(--space-10, 10px);
+  font-size: var(--font-size-caption, 0.75rem);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input-prefix {
-  padding-left: var(--size-spacing-md, 14px);
-  padding-right: var(--size-spacing-2xs, 8px);
+  padding-left: var(--space-16, 14px);
+  padding-right: var(--space-8, 8px);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input-suffix {
-  padding-left: var(--size-spacing-2xs, 8px);
-  padding-right: var(--size-spacing-md, 14px);
+  padding-left: var(--space-8, 8px);
+  padding-right: var(--space-16, 14px);
 }
 
 /* ================================
@@ -269,8 +270,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding-right: var(--size-spacing-sm, 12px);
-  color: var(--color-text-muted, #9ca3af);
+  padding-right: var(--space-12, 12px);
+  color: var(--text-color-muted, #9ca3af);
   pointer-events: none;
   border: none;
   background: transparent;
@@ -286,7 +287,7 @@ button.procrewz-input-icon--clickable {
   pointer-events: auto;
   cursor: pointer;
   padding: 0;
-  padding-right: var(--size-spacing-sm, 12px);
+  padding-right: var(--space-12, 12px);
   margin: 0;
   border: none;
   background: transparent;
@@ -295,7 +296,7 @@ button.procrewz-input-icon--clickable {
 }
 
 button.procrewz-input-icon--clickable:hover {
-  color: var(--color-text-default, #374151);
+  color: var(--text-color-default, #374151);
 }
 
 button.procrewz-input-icon--clickable:focus {
@@ -309,7 +310,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 /* Size-specific icons */
 .procrewz-input-wrapper--sm .procrewz-input-icon {
-  padding-right: var(--size-spacing-xs, 10px);
+  padding-right: var(--space-10, 10px);
 }
 
 .procrewz-input-wrapper--sm .procrewz-input-icon svg {
@@ -318,7 +319,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-input-wrapper--lg .procrewz-input-icon {
-  padding-right: var(--size-spacing-md, 14px);
+  padding-right: var(--space-16, 14px);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input-icon svg {
@@ -333,7 +334,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 .procrewz-input-wrapper--has-icon.procrewz-input-wrapper--clearable
   .procrewz-input-icon {
-  padding-right: var(--size-spacing-3xs, 4px);
+  padding-right: var(--space-4, 4px);
 }
 
 /* ================================
@@ -347,11 +348,11 @@ button.procrewz-input-icon--clickable:focus-visible {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  margin-right: var(--size-spacing-2xs, 6px);
+  margin-right: var(--space-8, 6px);
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--color-text-muted, #9ca3af);
+  color: var(--text-color-muted, #9ca3af);
   cursor: pointer;
   border-radius: var(--radius-4, 4px);
   transition:
@@ -360,14 +361,14 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-input-clear:hover {
-  color: var(--color-text-default, #374151);
-  background-color: var(--color-background-hover, #f3f4f6);
+  color: var(--text-color-default, #374151);
+  background-color: var(--background-color-hover, #f3f4f6);
 }
 
 .procrewz-input-clear:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 2px var(--color-surface-default, #fff),
+    0 0 0 2px var(--surface-color-default, #fff),
     0 0 0 4px var(--color-focus-ring, #5a4295);
 }
 
@@ -380,7 +381,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 .procrewz-input-wrapper--sm .procrewz-input-clear {
   width: 20px;
   height: 20px;
-  margin-right: var(--size-spacing-3xs, 4px);
+  margin-right: var(--space-4, 4px);
 }
 
 .procrewz-input-wrapper--sm .procrewz-input-clear-icon {
@@ -391,7 +392,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 .procrewz-input-wrapper--lg .procrewz-input-clear {
   width: 28px;
   height: 28px;
-  margin-right: var(--size-spacing-2xs, 8px);
+  margin-right: var(--space-8, 8px);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input-clear-icon {
@@ -410,11 +411,11 @@ button.procrewz-input-icon--clickable:focus-visible {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  margin-right: var(--size-spacing-2xs, 6px);
+  margin-right: var(--space-8, 6px);
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--color-text-muted, #9ca3af);
+  color: var(--text-color-muted, #9ca3af);
   cursor: pointer;
   border-radius: var(--radius-4, 4px);
   transition:
@@ -423,14 +424,14 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-input-password-toggle:hover {
-  color: var(--color-text-default, #374151);
-  background-color: var(--color-background-hover, #f3f4f6);
+  color: var(--text-color-default, #374151);
+  background-color: var(--background-color-hover, #f3f4f6);
 }
 
 .procrewz-input-password-toggle:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 2px var(--color-surface-default, #fff),
+    0 0 0 2px var(--surface-color-default, #fff),
     0 0 0 4px var(--color-focus-ring, #5a4295);
 }
 
@@ -443,7 +444,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 .procrewz-input-wrapper--sm .procrewz-input-password-toggle {
   width: 20px;
   height: 20px;
-  margin-right: var(--size-spacing-3xs, 4px);
+  margin-right: var(--space-4, 4px);
 }
 
 .procrewz-input-wrapper--sm .procrewz-input-password-icon {
@@ -454,7 +455,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 .procrewz-input-wrapper--lg .procrewz-input-password-toggle {
   width: 28px;
   height: 28px;
-  margin-right: var(--size-spacing-2xs, 8px);
+  margin-right: var(--space-8, 8px);
 }
 
 .procrewz-input-wrapper--lg .procrewz-input-password-icon {
@@ -468,11 +469,11 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 .procrewz-input-helper {
   display: block;
-  font-family: var(--font-family-base);
-  font-size: var(--size-font-xs, 0.75rem);
-  color: var(--color-text-muted, #6b7280);
-  margin-top: var(--size-spacing-2xs, 6px);
-  line-height: var(--size-line-height-text, 1.5);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-caption, 0.75rem);
+  color: var(--text-color-muted, #6b7280);
+  margin-top: var(--space-8, 6px);
+  line-height: var(--line-height-text, 1.5);
 }
 
 .procrewz-input-helper--error {
@@ -485,7 +486,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 /* Label - Dark */
 .procrewz-input-label--dark {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
 }
 
 /* Wrapper - Dark */
@@ -512,8 +513,8 @@ button.procrewz-input-icon--clickable:focus-visible {
 .procrewz-input-wrapper--dark .procrewz-input {
   color: color-mix(
     in srgb,
-    var(--color-text-default, #f9fafb) 20%,
-    var(--color-text-inverse)
+    var(--text-color-default, #f9fafb) 20%,
+    var(--text-color-inverse)
   );
   caret-color: var(--color-brand-primary-light, #8b7cc7);
 }
@@ -534,7 +535,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-input-wrapper--dark button.procrewz-input-icon--clickable:hover {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
 }
 
 /* Clear Button - Dark */
@@ -543,7 +544,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-input-wrapper--dark .procrewz-input-clear:hover {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
   background-color: var(--color-background-hover-dark, #374151);
 }
 
@@ -553,7 +554,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-input-wrapper--dark .procrewz-input-password-toggle:hover {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
   background-color: var(--color-background-hover-dark, #374151);
 }
 
@@ -587,8 +588,8 @@ button.procrewz-input-icon--clickable:focus-visible {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface-default, #fff);
-  border: 1px solid var(--component-input-border-color-default, #e5e7eb);
+  background-color: var(--surface-color-default, #fff);
+  border: 1px solid var(--input-border-color-default, #e5e7eb);
   border-radius: var(--radius-8, 8px);
   box-shadow: var(
     --shadow-lg,
@@ -643,9 +644,9 @@ button.procrewz-input-icon--clickable:focus-visible {
   flex: 1;
   max-height: 200px;
   overflow-y: auto;
-  border-right: 1px solid var(--color-border-subtle, #f3f4f6);
+  border-right: 1px solid var(--border-color-subtle, #f3f4f6);
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border-default, #e5e7eb) transparent;
+  scrollbar-color: var(--border-color-default, #e5e7eb) transparent;
 }
 
 .procrewz-time-picker__column:last-child {
@@ -661,7 +662,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-time-picker__column::-webkit-scrollbar-thumb {
-  background-color: var(--color-border-default, #e5e7eb);
+  background-color: var(--border-color-default, #e5e7eb);
   border-radius: 3px;
 }
 
@@ -683,9 +684,9 @@ button.procrewz-input-icon--clickable:focus-visible {
   padding: 8px 12px;
   border: none;
   background: transparent;
-  font-family: var(--font-family-base);
-  font-size: var(--size-font-sm, 0.875rem);
-  color: var(--color-text-default, #374151);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-sm, 0.875rem);
+  color: var(--text-color-default, #374151);
   cursor: pointer;
   transition:
     background-color 150ms ease,
@@ -693,13 +694,13 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-time-picker__item:hover {
-  background-color: var(--color-background-hover, #f3f4f6);
+  background-color: var(--background-color-hover, #f3f4f6);
 }
 
 .procrewz-time-picker__item--selected {
   /* background-color: var(--color-brand-primary, #5a4295); */
   background-color: #e5e7eb;
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
   font-weight: var(--font-weight-medium, 500);
 }
 
@@ -714,15 +715,15 @@ button.procrewz-input-icon--clickable:focus-visible {
   justify-content: flex-end;
   gap: 8px;
   padding: 8px 12px;
-  border-top: 1px solid var(--color-border-subtle, #f3f4f6);
-  background-color: var(--color-surface-subtle, #f9fafb);
+  border-top: 1px solid var(--border-color-subtle, #f3f4f6);
+  background-color: var(--background-color-subtle, #f9fafb);
 }
 
 .procrewz-time-picker__btn {
   padding: 6px 12px;
   border-radius: var(--radius-6, 6px);
-  font-family: var(--font-family-base);
-  font-size: var(--size-font-sm, 0.875rem);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-sm, 0.875rem);
   font-weight: var(--font-weight-medium, 500);
   cursor: pointer;
   transition:
@@ -733,24 +734,24 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 .procrewz-time-picker__btn--cancel {
   background: transparent;
-  border: 1px solid var(--color-border-default, #e5e7eb);
-  color: var(--color-text-default, #374151);
+  border: 1px solid var(--border-color-default, #e5e7eb);
+  color: var(--text-color-default, #374151);
 }
 
 .procrewz-time-picker__btn--cancel:hover {
-  background-color: var(--color-background-hover, #f3f4f6);
-  border-color: var(--color-border-hover, #d1d5db);
+  background-color: var(--background-color-hover, #f3f4f6);
+  border-color: var(--border-color-strong, #d1d5db);
 }
 
 .procrewz-time-picker__btn--ok {
   background-color: var(--color-brand-primary, #5a4295);
   border: 1px solid var(--color-brand-primary, #5a4295);
-  color: var(--color-text-inverse, #fff);
+  color: var(--text-color-inverse, #fff);
 }
 
 .procrewz-time-picker__btn--ok:hover {
-  background-color: var(--color-brand-primary-hover, #4a3578);
-  border-color: var(--color-brand-primary-hover, #4a3578);
+  background-color: var(--color-brand-primary-strong, #4a3578);
+  border-color: var(--color-brand-primary-strong, #4a3578);
 }
 
 .procrewz-time-picker--dark {
@@ -768,7 +769,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-time-picker--dark .procrewz-time-picker__item {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
 }
 
 .procrewz-time-picker--dark .procrewz-time-picker__item:hover {
@@ -777,11 +778,11 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 .procrewz-time-picker--dark .procrewz-time-picker__item--selected {
   background-color: var(--color-brand-primary, #5a4295);
-  color: var(--color-text-inverse, #fff);
+  color: var(--text-color-inverse, #fff);
 }
 
 .procrewz-time-picker--dark .procrewz-time-picker__item--selected:hover {
-  background-color: var(--color-brand-primary-hover, #4a3578);
+  background-color: var(--color-brand-primary-strong, #4a3578);
 }
 
 .procrewz-time-picker--dark .procrewz-time-picker__footer {
@@ -791,7 +792,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 .procrewz-time-picker--dark .procrewz-time-picker__btn--cancel {
   border-color: var(--color-border-dark, #374151);
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
 }
 
 .procrewz-time-picker--dark .procrewz-time-picker__btn--cancel:hover {
@@ -810,8 +811,8 @@ button.procrewz-input-icon--clickable:focus-visible {
   z-index: 1000;
   width: 280px;
   padding: 12px;
-  background-color: var(--color-surface-default, #fff);
-  border: 1px solid var(--component-input-border-color-default, #e5e7eb);
+  background-color: var(--surface-color-default, #fff);
+  border: 1px solid var(--input-border-color-default, #e5e7eb);
   border-radius: var(--radius-8, 8px);
   box-shadow: var(
     --shadow-lg,
@@ -820,6 +821,33 @@ button.procrewz-input-icon--clickable:focus-visible {
   );
   animation: procrewz-date-picker-in 150ms ease-out;
   transform-origin: top right;
+}
+
+/* Range mode: wider container for two months */
+.procrewz-date-picker--range {
+  width: 576px;
+}
+
+/* Range container: two months side by side */
+.procrewz-date-picker__range-container {
+  display: flex;
+  gap: 16px;
+}
+
+/* Each month panel in range mode */
+.procrewz-date-picker__month-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Month/Year label for range mode */
+.procrewz-date-picker__month-year-label {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-family-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color-default, #111827);
 }
 
 .procrewz-date-picker--up {
@@ -870,7 +898,7 @@ button.procrewz-input-icon--clickable:focus-visible {
   border: none;
   border-radius: 6px;
   background: transparent;
-  color: var(--color-text-default, #374151);
+  color: var(--text-color-default, #374151);
   cursor: pointer;
   transition: background-color 150ms ease;
 }
@@ -881,7 +909,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-date-picker__nav-btn:hover {
-  background-color: var(--color-background-hover, #f3f4f6);
+  background-color: var(--background-color-hover, #f3f4f6);
 }
 
 /* Month/Year Selectors */
@@ -901,10 +929,10 @@ button.procrewz-input-icon--clickable:focus-visible {
   align-items: center;
   gap: 2px;
   padding: 4px 8px;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
   border: none;
   border-radius: 6px;
   background: transparent;
@@ -913,7 +941,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-date-picker__selector-btn:hover {
-  background-color: var(--color-background-hover, #f3f4f6);
+  background-color: var(--background-color-hover, #f3f4f6);
 }
 
 .procrewz-date-picker__chevron {
@@ -933,7 +961,7 @@ button.procrewz-input-icon--clickable:focus-visible {
   margin-top: 4px;
   padding: 4px;
   border-radius: 8px;
-  background: var(--color-surface-default, #ffffff);
+  background: var(--surface-color-default, #ffffff);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0;
   visibility: hidden;
@@ -961,19 +989,19 @@ button.procrewz-input-icon--clickable:focus-visible {
 
 .procrewz-date-picker__dropdown-item {
   padding: 6px 12px;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   font-size: 13px;
   text-align: center;
   border: none;
   border-radius: 4px;
   background: transparent;
-  color: var(--color-text-default, #374151);
+  color: var(--text-color-default, #374151);
   cursor: pointer;
   transition: background-color 150ms ease;
 }
 
 .procrewz-date-picker__dropdown-item:hover {
-  background-color: var(--color-background-hover, #f3f4f6);
+  background-color: var(--background-color-hover, #f3f4f6);
 }
 
 .procrewz-date-picker__dropdown-item--selected {
@@ -982,7 +1010,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-date-picker__dropdown-item--selected:hover {
-  background-color: var(--color-brand-primary-hover, #4a3578);
+  background-color: var(--color-brand-primary-strong, #4a3578);
 }
 
 /* Weekday Headers */
@@ -997,10 +1025,10 @@ button.procrewz-input-icon--clickable:focus-visible {
   align-items: center;
   justify-content: center;
   height: 32px;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   font-size: 12px;
   font-weight: 500;
-  color: var(--color-text-muted, #6b7280);
+  color: var(--text-color-muted, #6b7280);
 }
 
 /* Calendar Grid */
@@ -1022,44 +1050,76 @@ button.procrewz-input-icon--clickable:focus-visible {
   justify-content: center;
   width: 36px;
   height: 36px;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   font-size: 14px;
   border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--color-text-default, #111827);
+  border-radius: var(--radius-6, 6px);
+  background-color: var(--surface-color-default, #fcfcfd);
+  color: var(--text-color-default, #111827);
   cursor: pointer;
   transition:
     background-color 150ms ease,
     color 150ms ease;
 }
 
-.procrewz-date-picker__day:hover:not(.procrewz-date-picker__day--selected) {
-  background-color: var(--color-background-hover, #f3f4f6);
+.procrewz-date-picker__day:hover:not(.procrewz-date-picker__day--selected):not(
+    .procrewz-date-picker__day--range-start
+  ):not(.procrewz-date-picker__day--range-end) {
+  background-color: rgba(90, 66, 149, 0.15);
 }
 
 .procrewz-date-picker__day--outside {
-  color: var(--color-text-muted, #9ca3af);
+  color: var(--text-color-placeholder, #6b7280);
 }
 
 .procrewz-date-picker__day--today {
-  font-weight: 600;
-  background-color: var(--color-background-subtle, #f3f4f6);
+  background-color: var(--background-color-brand, #f1f0f8);
+  color: var(--color-brand-primary, #5a4295);
+  font-weight: var(--font-weight-bold, 700);
+}
+
+.procrewz-date-picker__day--today:hover {
+  background-color: var(--background-color-brand, #f1f0f8);
 }
 
 .procrewz-date-picker__day--selected {
-  background-color: var(--color-brand-primary, #5a4295);
-  color: #ffffff;
+  background-color: var(--color-brand-primary, #5a4295) !important;
+  color: var(--text-color-inverse, #fff) !important;
   font-weight: 500;
 }
 
 .procrewz-date-picker__day--selected:hover {
-  background-color: var(--color-brand-primary-hover, #4a3578);
+  background-color: var(--color-brand-primary-strong, #423070) !important;
+  color: var(--text-color-inverse, #fff) !important;
 }
 
 .procrewz-date-picker__day--selected.procrewz-date-picker__day--today {
-  background-color: var(--color-brand-primary, #5a4295);
-  color: #ffffff;
+  background-color: var(--color-brand-primary, #5a4295) !important;
+  color: var(--text-color-inverse, #fff) !important;
+}
+
+/* Range Selection Styles - Match Vanilla Calendar Pro */
+.procrewz-date-picker__day--in-range {
+  background-color: rgba(90, 66, 149, 0.15) !important;
+  color: var(--color-brand-primary, #5a4295) !important;
+}
+
+.procrewz-date-picker__day--in-range:hover {
+  background-color: rgba(90, 66, 149, 0.2) !important;
+  color: var(--color-brand-primary, #5a4295) !important;
+}
+
+.procrewz-date-picker__day--range-start,
+.procrewz-date-picker__day--range-end {
+  background-color: var(--color-brand-primary, #5a4295) !important;
+  color: var(--text-color-inverse, #fff) !important;
+  font-weight: 500;
+}
+
+.procrewz-date-picker__day--range-start:hover,
+.procrewz-date-picker__day--range-end:hover {
+  background-color: var(--color-brand-primary-strong, #423070) !important;
+  color: var(--text-color-inverse, #fff) !important;
 }
 
 /* Dark Theme */
@@ -1069,7 +1129,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-date-picker--dark .procrewz-date-picker__nav-btn {
-  color: var(--color-text-inverse, #d1d5db);
+  color: var(--text-color-inverse, #d1d5db);
 }
 
 .procrewz-date-picker--dark .procrewz-date-picker__nav-btn:hover {
@@ -1077,7 +1137,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-date-picker--dark .procrewz-date-picker__selector-btn {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
 }
 
 .procrewz-date-picker--dark .procrewz-date-picker__selector-btn:hover {
@@ -1090,7 +1150,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-date-picker--dark .procrewz-date-picker__dropdown-item {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
 }
 
 .procrewz-date-picker--dark .procrewz-date-picker__dropdown-item:hover {
@@ -1102,7 +1162,7 @@ button.procrewz-input-icon--clickable:focus-visible {
 }
 
 .procrewz-date-picker--dark .procrewz-date-picker__day {
-  color: var(--color-text-inverse, #f9fafb);
+  color: var(--text-color-inverse, #f9fafb);
 }
 
 .procrewz-date-picker--dark

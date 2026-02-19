@@ -10,12 +10,12 @@
 
 /* Calendar Container */
 [data-vc-theme="light"].vc {
-  background-color: var(--color-surface-default, #fcfcfd);
-  color: var(--color-text-default, #111827);
+  background-color: var(--surface-color-default, #fcfcfd);
+  color: var(--text-color-default, #111827);
   border-radius: var(--radius-8, 8px);
-  border: var(--border-width-1, 1px) solid var(--color-border-default, #d1d5db);
+  border: var(--border-width-1, 1px) solid var(--border-color-default, #d1d5db);
   box-shadow: var(--shadow-md);
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
 }
 
 [data-vc-theme="light"].vc[data-vc-input] {
@@ -47,7 +47,7 @@
 [data-vc-theme="light"] .vc-header__content,
 [data-vc-theme="light"] .vc-month,
 [data-vc-theme="light"] .vc-year {
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
   font-weight: var(--font-weight-semibold, 600);
 }
 
@@ -64,8 +64,8 @@
 /* Month/Year selection grid */
 [data-vc-theme="light"] .vc-months__month,
 [data-vc-theme="light"] .vc-years__year {
-  background-color: var(--color-surface-default, #fcfcfd);
-  color: var(--color-text-muted, #4b5563);
+  background-color: var(--surface-color-default, #fcfcfd);
+  color: var(--text-color-muted, #4b5563);
   border-radius: var(--radius-6, 6px);
 }
 
@@ -76,54 +76,54 @@
 
 [data-vc-theme="light"] .vc-months__month:hover,
 [data-vc-theme="light"] .vc-years__year:hover {
-  background-color: var(--color-background-subtle, #f9fafb);
+  background-color: var(--background-color-subtle, #f9fafb);
 }
 
 /* Selected month/year */
 [data-vc-theme="light"] .vc-months__month[data-vc-months-month-selected],
 [data-vc-theme="light"] .vc-years__year[data-vc-years-year-selected] {
   background-color: var(--color-brand-primary, #5a4295);
-  color: var(--color-text-inverse, #fff);
+  color: var(--text-color-inverse, #fff);
 }
 
 [data-vc-theme="light"] .vc-months__month[data-vc-months-month-selected]:hover,
 [data-vc-theme="light"] .vc-years__year[data-vc-years-year-selected]:hover {
-  background-color: var(--color-primary-hover, #423070);
+  background-color: var(--color-brand-primary-strong, #423070);
 }
 
 /* Week day headers */
 [data-vc-theme="light"] .vc-week__day {
-  color: var(--color-text-muted, #4b5563);
+  color: var(--text-color-muted, #4b5563);
   font-weight: var(--font-weight-semibold, 600);
 }
 
 [data-vc-theme="light"] button.vc-week__day:hover {
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
 }
 
 /* Weekend indicator in week header */
 [data-vc-theme="light"] .vc-week__day[data-vc-week-day-off] {
-  color: var(--color-text-muted, #6b7280);
+  color: var(--text-color-muted, #6b7280);
 }
 
 [data-vc-theme="light"] button.vc-week__day[data-vc-week-day-off]:hover {
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
 }
 
 /* Week numbers */
 [data-vc-theme="light"] .vc-week-number,
 [data-vc-theme="light"] .vc-week-numbers__title {
-  color: var(--color-text-muted, #4b5563);
+  color: var(--text-color-muted, #4b5563);
 }
 
 [data-vc-theme="light"] .vc-week-number:hover {
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
 }
 
 /* Date buttons - default state */
 [data-vc-theme="light"] .vc-date__btn {
-  background-color: var(--color-surface-default, #fcfcfd);
-  color: var(--color-text-default, #111827);
+  background-color: var(--surface-color-default, #fcfcfd);
+  color: var(--text-color-default, #111827);
   border-radius: var(--radius-6, 6px);
 }
 
@@ -133,19 +133,19 @@
 
 /* Today indicator */
 [data-vc-theme="light"] .vc-date[data-vc-date-today] .vc-date__btn {
-  background-color: var(--color-background-brand, #f1f0f8);
+  background-color: var(--background-color-brand, #f1f0f8);
   color: var(--color-brand-primary, #5a4295);
   font-weight: var(--font-weight-bold, 700);
 }
 
 [data-vc-theme="light"] .vc-date[data-vc-date-today] .vc-date__btn:hover {
-  background-color: var(--color-background-brand, #f1f0f8);
+  background-color: var(--background-color-brand, #f1f0f8);
 }
 
 /* Dates from prev/next months */
 [data-vc-theme="light"] .vc-date[data-vc-date-month="next"] .vc-date__btn,
 [data-vc-theme="light"] .vc-date[data-vc-date-month="prev"] .vc-date__btn {
-  color: var(--color-text-placeholder, #6b7280);
+  color: var(--text-color-placeholder, #6b7280);
 }
 
 /* Disabled dates */
@@ -168,13 +168,13 @@
 /* Weekend dates - use brand purple hover like all other dates */
 [data-vc-theme="light"] .vc-date[data-vc-date-weekend] .vc-date__btn,
 [data-vc-theme="light"] .vc-date[data-vc-date-holiday] .vc-date__btn {
-  color: var(--color-text-muted, #6b7280);
+  color: var(--text-color-muted, #6b7280);
 }
 
 [data-vc-theme="light"] .vc-date[data-vc-date-weekend] .vc-date__btn:hover,
 [data-vc-theme="light"] .vc-date[data-vc-date-holiday] .vc-date__btn:hover {
   background-color: rgba(90, 66, 149, 0.15) !important; /* 15% brand purple */
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
 }
 
 /* Override media query hover states for weekends - use brand purple */
@@ -182,7 +182,7 @@
   [data-vc-theme="light"] .vc-date[data-vc-date-weekend] .vc-date__btn:hover,
   [data-vc-theme="light"] .vc-date[data-vc-date-holiday] .vc-date__btn:hover {
     background-color: rgba(90, 66, 149, 0.15) !important; /* 15% brand purple */
-    color: var(--color-text-default, #111827);
+    color: var(--text-color-default, #111827);
   }
   
   [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-hover] .vc-date__btn,
@@ -201,18 +201,18 @@
 /* Selected date - PRIMARY BRAND COLOR */
 [data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn {
   background-color: var(--color-brand-primary, #5a4295) !important;
-  color: var(--color-text-inverse, #fff) !important;
+  color: var(--text-color-inverse, #fff) !important;
 }
 
 [data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn:hover {
-  background-color: var(--color-primary-hover, #423070) !important;
-  color: var(--color-text-inverse, #fff) !important;
+  background-color: var(--color-brand-primary-strong, #423070) !important;
+  color: var(--text-color-inverse, #fff) !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
   [data-vc-theme="light"] .vc-date[data-vc-date-selected] .vc-date__btn:hover {
-    background-color: var(--color-primary-hover, #423070) !important;
-    color: var(--color-text-inverse, #fff) !important;
+    background-color: var(--color-brand-primary-strong, #423070) !important;
+    color: var(--text-color-inverse, #fff) !important;
   }
 }
 
@@ -238,20 +238,20 @@
 [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn,
 [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn {
   background-color: var(--color-brand-primary, #5a4295) !important;
-  color: var(--color-text-inverse, #fff) !important;
+  color: var(--text-color-inverse, #fff) !important;
 }
 
 [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
 [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
-  background-color: var(--color-primary-hover, #423070) !important;
-  color: var(--color-text-inverse, #fff) !important;
+  background-color: var(--color-brand-primary-strong, #423070) !important;
+  color: var(--text-color-inverse, #fff) !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
   [data-vc-theme="light"] .vc-date[data-vc-date-weekend][data-vc-date-selected] .vc-date__btn:hover,
   [data-vc-theme="light"] .vc-date[data-vc-date-holiday][data-vc-date-selected] .vc-date__btn:hover {
-    background-color: var(--color-primary-hover, #423070) !important;
-    color: var(--color-text-inverse, #fff) !important;
+    background-color: var(--color-brand-primary-strong, #423070) !important;
+    color: var(--text-color-inverse, #fff) !important;
   }
 }
 
@@ -272,34 +272,34 @@
 
 /* Date popup tooltip */
 [data-vc-theme="light"] .vc-date__popup {
-  background-color: var(--color-surface-raised, #fcfcfd);
-  color: var(--color-text-default, #111827);
+  background-color: var(--surface-color-raised, #fcfcfd);
+  color: var(--text-color-default, #111827);
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius-6, 6px);
 }
 
 /* Date range tooltip */
 [data-vc-theme="light"] .vc-date-range-tooltip {
-  background-color: var(--color-surface-raised, #fcfcfd);
-  color: var(--color-text-muted, #4b5563);
+  background-color: var(--surface-color-raised, #fcfcfd);
+  color: var(--text-color-muted, #4b5563);
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius-4, 4px);
 }
 
 /* Time picker section */
 [data-vc-theme="light"] .vc-time {
-  border-color: var(--color-border-subtle, #e5e7eb);
+  border-color: var(--border-color-subtle, #e5e7eb);
 }
 
 [data-vc-theme="light"] .vc-time__hour:after,
 [data-vc-theme="light"] .vc-time__minute:after {
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
 }
 
 [data-vc-theme="light"] .vc-time__hour input,
 [data-vc-theme="light"] .vc-time__minute input {
-  background-color: var(--color-surface-default, #fcfcfd);
-  color: var(--color-text-default, #111827);
+  background-color: var(--surface-color-default, #fcfcfd);
+  color: var(--text-color-default, #111827);
   border-radius: var(--radius-4, 4px);
 }
 
@@ -310,17 +310,17 @@
 
 [data-vc-theme="light"] .vc-time__hour input:hover,
 [data-vc-theme="light"] .vc-time__minute input:hover {
-  background-color: var(--color-background-brand, #f1f0f8);
+  background-color: var(--background-color-brand, #f1f0f8);
 }
 
 [data-vc-theme="light"] .vc-time__hour input[data-vc-input-focus],
 [data-vc-theme="light"] .vc-time__minute input[data-vc-input-focus] {
-  background-color: var(--color-background-brand, #f1f0f8);
+  background-color: var(--background-color-brand, #f1f0f8);
 }
 
 /* AM/PM button */
 [data-vc-theme="light"] .vc-time__keeping {
-  color: var(--color-text-muted, #4b5563);
+  color: var(--text-color-muted, #4b5563);
 }
 
 [data-vc-theme="light"] .vc-time__keeping:focus-visible {
@@ -328,18 +328,18 @@
 }
 
 [data-vc-theme="light"] .vc-time__keeping:hover {
-  background-color: var(--color-background-brand, #f1f0f8);
+  background-color: var(--background-color-brand, #f1f0f8);
   color: var(--color-brand-primary, #5a4295);
 }
 
 /* Time range sliders */
 [data-vc-theme="light"] .vc-time__range input {
-  background-color: var(--color-surface-default, #fcfcfd);
+  background-color: var(--surface-color-default, #fcfcfd);
 }
 
 [data-vc-theme="light"] .vc-time__range:after,
 [data-vc-theme="light"] .vc-time__range:before {
-  background-color: var(--color-border-default, #d1d5db);
+  background-color: var(--border-color-default, #d1d5db);
 }
 
 [data-vc-theme="light"] .vc-time__range:hover input::-webkit-slider-thumb {
@@ -359,25 +359,24 @@
 }
 
 [data-vc-theme="light"] .vc-time__range input::-webkit-slider-thumb {
-  border-color: var(--color-border-default, #d1d5db);
-  background-color: var(--color-surface-default, #fcfcfd);
+  border-color: var(--border-color-default, #d1d5db);
+  background-color: var(--surface-color-default, #fcfcfd);
 }
 
 [data-vc-theme="light"] .vc-time__range input::-moz-range-thumb {
-  border-color: var(--color-border-default, #d1d5db);
-  background-color: var(--color-surface-default, #fcfcfd);
+  border-color: var(--border-color-default, #d1d5db);
+  background-color: var(--surface-color-default, #fcfcfd);
 }
 
 [data-vc-theme="light"] .vc-time__range input::-webkit-slider-runnable-track {
-  background-color: var(--color-border-default, #d1d5db);
+  background-color: var(--border-color-default, #d1d5db);
 }
 
 [data-vc-theme="light"] .vc-time__range input::-moz-range-track {
-  background-color: var(--color-border-default, #d1d5db);
+  background-color: var(--border-color-default, #d1d5db);
 }
 
 /* Modal variant adjustments */
 [data-vc-theme="light"].vc.modal {
   z-index: 9999;
 }
-

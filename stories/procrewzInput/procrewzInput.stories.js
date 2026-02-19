@@ -70,6 +70,15 @@ const generateSourceCode = (args) => {
   if (args.prefix) attrs.push(`prefix="${args.prefix}"`);
   if (args.suffix) attrs.push(`suffix="${args.suffix}"`);
 
+  // Date Selection Mode (only for date type)
+  if (
+    args.type === "date" &&
+    args.dateSelectionMode &&
+    args.dateSelectionMode !== "single"
+  ) {
+    attrs.push(`date-selection-mode="${args.dateSelectionMode}"`);
+  }
+
   // Build the code string
   if (attrs.length === 0) {
     return `<c-procrewz-input></c-procrewz-input>`;
@@ -253,6 +262,17 @@ export default {
       control: "text",
       description: "Text/symbol after input (e.g., '@company.com', 'USD')",
       table: { category: "Addons" }
+    },
+
+    // ============================================
+    // DATE PICKER
+    // ============================================
+    dateSelectionMode: {
+      control: "select",
+      options: ["single", "range"],
+      description: "Date selection mode (only for date type)",
+      table: { category: "Date Picker" },
+      if: { arg: "type", eq: "date" }
     }
   },
   render: renderInput
@@ -273,7 +293,8 @@ const defaultArgs = {
   clearable: false,
   showError: false,
   showHelpText: false,
-  hideIcon: false
+  hideIcon: false,
+  dateSelectionMode: "single"
 };
 
 // ============================================
@@ -512,13 +533,31 @@ export const DatePicker = {
   args: {
     ...defaultArgs,
     showLabel: true,
-    type: "date"
+    type: "date",
+    dateSelectionMode: "single"
   },
   parameters: {
     docs: {
       description: {
         story:
           "Date type provides MM/DD/YYYY masking with a calendar dropdown. Type or click the calendar icon."
+      }
+    }
+  }
+};
+
+export const DateRangePicker = {
+  args: {
+    ...defaultArgs,
+    showLabel: true,
+    type: "date",
+    dateSelectionMode: "range"
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Date range selection shows two months side by side. Click to select start date, then click to select end date. The input displays the range as MM/DD/YYYY - MM/DD/YYYY."
       }
     }
   }

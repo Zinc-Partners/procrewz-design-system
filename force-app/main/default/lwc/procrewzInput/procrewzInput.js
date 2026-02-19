@@ -41,6 +41,9 @@ export default class ProcrewzInput extends LightningElement {
   @api minuteStep = 5; // 1, 5, 10, 15, 30
   @api dropdownPosition = "auto"; // 'auto', 'up', 'down'
 
+  // Date Picker Options
+  @api dateSelectionMode = "single"; // 'single' or 'range'
+
   // Tracked state
   @track _value = "";
   @track _disabled = false;
@@ -391,7 +394,84 @@ export default class ProcrewzInput extends LightningElement {
     if (this.datePickerPosition === "up") {
       classes.push("procrewz-date-picker--up");
     }
+    if (this.dateSelectionMode === "range") {
+      classes.push("procrewz-date-picker--range");
+    }
     return classes.join(" ");
+  }
+
+  get isSingleDateMode() {
+    return this.dateSelectionMode !== "range";
+  }
+
+  get isRangeDateMode() {
+    return this.dateSelectionMode === "range";
+  }
+
+  // First month in range mode
+  get firstMonthLabel() {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    return months[this.currentMonth];
+  }
+
+  get firstYearLabel() {
+    return this.currentYear;
+  }
+
+  // Second month in range mode (next month)
+  get secondMonthLabel() {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    const nextMonth = this.currentMonth === 11 ? 0 : this.currentMonth + 1;
+    return months[nextMonth];
+  }
+
+  get secondYearLabel() {
+    return this.currentMonth === 11 ? this.currentYear + 1 : this.currentYear;
+  }
+
+  // Calendar days for first month in range mode
+  get firstMonthDays() {
+    if (this.dateSelectionMode !== "range") {
+      return [];
+    }
+    return this.generateMonthDays(this.currentMonth, this.currentYear);
+  }
+
+  // Calendar days for second month in range mode
+  get secondMonthDays() {
+    if (this.dateSelectionMode !== "range") {
+      return [];
+    }
+    const nextMonth = this.currentMonth === 11 ? 0 : this.currentMonth + 1;
+    const nextYear =
+      this.currentMonth === 11 ? this.currentYear + 1 : this.currentYear;
+    return this.generateMonthDays(nextMonth, nextYear);
   }
 
   get shortMonthLabel() {
@@ -461,15 +541,22 @@ export default class ProcrewzInput extends LightningElement {
   }
 
   get calendarDays() {
+    if (this.dateSelectionMode === "range") {
+      return [];
+    }
+    return this.generateMonthDays(this.currentMonth, this.currentYear);
+  }
+
+  generateMonthDays(month, year) {
     const days = [];
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const firstDay = new Date(this.currentYear, this.currentMonth, 1);
+    const firstDay = new Date(year, month, 1);
     const startingDay = firstDay.getDay();
-    const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
+    const lastDay = new Date(year, month + 1, 0);
     const totalDays = lastDay.getDate();
-    const prevMonthLastDay = new Date(this.currentYear, this.currentMonth, 0);
+    const prevMonthLastDay = new Date(year, month, 0);
     const prevMonthDays = prevMonthLastDay.getDate();
 
     let dayCount = 1;
@@ -483,20 +570,20 @@ export default class ProcrewzInput extends LightningElement {
 
         if (cellIndex < startingDay) {
           dayNumber = prevMonthDays - startingDay + cellIndex + 1;
-          date = new Date(this.currentYear, this.currentMonth - 1, dayNumber);
+          date = new Date(year, month - 1, dayNumber);
           isCurrentMonth = false;
           isPrevMonth = true;
           isNextMonth = false;
         } else if (dayCount <= totalDays) {
           dayNumber = dayCount;
-          date = new Date(this.currentYear, this.currentMonth, dayNumber);
+          date = new Date(year, month, dayNumber);
           isCurrentMonth = true;
           isPrevMonth = false;
           isNextMonth = false;
           dayCount++;
         } else {
           dayNumber = nextMonthDay;
-          date = new Date(this.currentYear, this.currentMonth + 1, dayNumber);
+          date = new Date(year, month + 1, dayNumber);
           isCurrentMonth = false;
           isPrevMonth = false;
           isNextMonth = true;
@@ -504,13 +591,41 @@ export default class ProcrewzInput extends LightningElement {
         }
 
         const isToday = date.getTime() === today.getTime();
-        const isSelected =
-          this.selectedDate && this.isSameDay(date, this.selectedDate);
+
+        // Handle selection for both single and range modes
+        let isSelected = false;
+        let isRangeStart = false;
+        let isRangeEnd = false;
+        let isInRange = false;
+
+        if (this.dateSelectionMode === "range") {
+          if (this.selectedDates && this.selectedDates.length > 0) {
+            const startDate = this.selectedDates[0];
+            const endDate = this.selectedDates[this.selectedDates.length - 1];
+
+            isRangeStart = this.isSameDay(date, startDate);
+            isRangeEnd =
+              this.selectedDates.length > 1 && this.isSameDay(date, endDate);
+
+            if (this.selectedDates.length > 1) {
+              isInRange = date > startDate && date < endDate;
+            }
+
+            isSelected = isRangeStart || isRangeEnd;
+          }
+        } else {
+          isSelected =
+            this.selectedDate && this.isSameDay(date, this.selectedDate);
+        }
 
         const classes = ["procrewz-date-picker__day"];
         if (!isCurrentMonth) classes.push("procrewz-date-picker__day--outside");
         if (isToday) classes.push("procrewz-date-picker__day--today");
         if (isSelected) classes.push("procrewz-date-picker__day--selected");
+        if (isRangeStart)
+          classes.push("procrewz-date-picker__day--range-start");
+        if (isRangeEnd) classes.push("procrewz-date-picker__day--range-end");
+        if (isInRange) classes.push("procrewz-date-picker__day--in-range");
 
         weekDays.push({
           key: `${week}-${day}`,
@@ -718,22 +833,80 @@ export default class ProcrewzInput extends LightningElement {
   handleDayClick(event) {
     const dayIndex = event.currentTarget.dataset.day;
     const weekIndex = event.currentTarget.dataset.week;
-    const week = this.calendarDays[parseInt(weekIndex, 10)];
-    const dayData = week.days[parseInt(dayIndex, 10)];
+    const monthType = event.currentTarget.dataset.month; // 'first' or 'second' for range mode
 
-    this.selectedDate = dayData.date;
-    this._committedDate = dayData.date;
-    this._value = this.formatDateValue(dayData.date);
+    let week, dayData;
 
-    // Navigate to clicked month if it's from prev/next month
-    if (dayData.isPrevMonth) {
-      this.handlePrevMonth();
-    } else if (dayData.isNextMonth) {
-      this.handleNextMonth();
+    if (this.dateSelectionMode === "range") {
+      // Get the day data from the appropriate month
+      const monthDays =
+        monthType === "second" ? this.secondMonthDays : this.firstMonthDays;
+
+      if (!monthDays || monthDays.length === 0) {
+        console.error("Month days not available for range mode");
+        return;
+      }
+
+      week = monthDays[parseInt(weekIndex, 10)];
+      if (!week) {
+        console.error("Week not found", weekIndex);
+        return;
+      }
+
+      dayData = week.days[parseInt(dayIndex, 10)];
+      if (!dayData) {
+        console.error("Day not found", dayIndex);
+        return;
+      }
+
+      // Handle range selection
+      if (!this.selectedDates || this.selectedDates.length === 0) {
+        // First date selected - keep picker open
+        this.selectedDates = [dayData.date];
+        this._value = this.formatDateValue(dayData.date);
+        // Don't close picker - wait for second date
+      } else if (this.selectedDates.length === 1) {
+        // Second date selected - complete the range
+        const firstDate = this.selectedDates[0];
+        if (dayData.date < firstDate) {
+          // If second date is before first, swap them
+          this.selectedDates = [dayData.date, firstDate];
+        } else {
+          this.selectedDates = [firstDate, dayData.date];
+        }
+
+        // Format as "MM/DD/YYYY - MM/DD/YYYY"
+        const startFormatted = this.formatDateValue(this.selectedDates[0]);
+        const endFormatted = this.formatDateValue(this.selectedDates[1]);
+        this._value = `${startFormatted} - ${endFormatted}`;
+
+        this.dispatchChangeEvent(this._value);
+        this.closeDatePicker();
+      } else {
+        // Reset and start new selection
+        this.selectedDates = [dayData.date];
+        this._value = this.formatDateValue(dayData.date);
+        // Don't close picker - wait for second date
+      }
+    } else {
+      // Single date mode
+      week = this.calendarDays[parseInt(weekIndex, 10)];
+      dayData = week.days[parseInt(dayIndex, 10)];
+
+      this.selectedDate = dayData.date;
+      this._committedDate = dayData.date;
+      this._value = this.formatDateValue(dayData.date);
+
+      // Navigate to clicked month if it's from prev/next month
+      if (dayData.isPrevMonth) {
+        this.handlePrevMonth();
+      } else if (dayData.isNextMonth) {
+        this.handleNextMonth();
+      }
+
+      this.dispatchChangeEvent(this._value);
+      this.closeDatePicker();
     }
-
-    this.dispatchChangeEvent(this._value);
-    this.closeDatePicker();
   }
 
   parseTimeValue(val) {
@@ -1211,6 +1384,23 @@ export default class ProcrewzInput extends LightningElement {
   get ariaLabel() {
     // Use label for aria-label when label is visually hidden
     return this.hideLabel && this.label ? this.label : null;
+  }
+
+  get computedPlaceholder() {
+    // If placeholder is explicitly set, use it
+    if (this.placeholder) {
+      return this.placeholder;
+    }
+
+    // Auto-detect placeholder based on type and mode
+    if (this.isDatePickerMask) {
+      if (this.dateSelectionMode === "range") {
+        return "MM/DD/YYYY - MM/DD/YYYY";
+      }
+      return "MM/DD/YYYY";
+    }
+
+    return "";
   }
 
   // ============================================

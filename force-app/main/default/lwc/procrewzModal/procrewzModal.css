@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-surface-overlay, rgba(0, 0, 0, 0.5));
+  background-color: var(--surface-color-overlay, rgba(0, 0, 0, 0.5));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,19 +47,19 @@
 
 /* Size Variants */
 .procrewz-modal--small {
-  width: var(--component-modal-width-small, 400px);
+  width: var(--modal-width-small, 400px);
 }
 
 .procrewz-modal--medium {
-  width: var(--component-modal-width-medium, 560px);
+  width: var(--modal-width-medium, 560px);
 }
 
 .procrewz-modal--large {
-  width: var(--component-modal-width-large, 720px);
+  width: var(--modal-width-large, 720px);
 }
 
 .procrewz-modal--full {
-  width: var(--component-modal-width-full, calc(100vw - 64px));
+  width: var(--modal-width-full, calc(100vw - 64px));
 }
 
 /* Container */
@@ -67,14 +67,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(
-    --component-modal-background,
-    var(--color-surface-raised, #fff)
-  );
-  border-radius: var(--component-modal-border-radius, var(--radius-12, 12px));
-  box-shadow: var(--component-modal-shadow, var(--shadow-xl));
+  background: var(--modal-background, var(--surface-color-raised, #fff));
+  border-radius: var(--modal-border-radius, var(--radius-12, 12px));
+  box-shadow: var(--modal-shadow, var(--shadow-xl));
   overflow: hidden;
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
 }
 
 /* Header */
@@ -84,18 +81,15 @@
   justify-content: space-between;
   padding: var(--space-12, 12px) var(--space-24, 24px);
   border-bottom: var(--border-width-1, 1px) solid
-    var(
-      --component-modal-header-border-color,
-      var(--color-border-subtle, #e5e7eb)
-    );
+    var(--modal-header-border-color, var(--border-color-subtle, #e5e7eb));
 }
 
 .procrewz-modal__title {
   margin: 0;
-  font-size: var(--size-font-lg, 1.25rem);
+  font-size: var(--font-size-body-lg, 1.25rem);
   font-weight: var(--font-weight-semibold, 600);
-  color: var(--color-text-default, #111827);
-  line-height: var(--size-line-height-heading, 1.25);
+  color: var(--text-color-default, #111827);
+  line-height: var(--line-height-heading, 1.25);
 }
 
 .procrewz-modal__close {
@@ -117,14 +111,14 @@
 }
 
 .procrewz-modal__close:hover {
-  background-color: var(--color-background-hover, #f3f4f6);
-  color: var(--color-text-default, #111827);
+  background-color: var(--background-color-hover, #f3f4f6);
+  color: var(--text-color-default, #111827);
 }
 
 .procrewz-modal__close:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 2px var(--color-surface-default, #fff),
+    0 0 0 2px var(--surface-color-default, #fff),
     0 0 0 4px var(--color-focus-ring, #5a4295);
 }
 
@@ -135,11 +129,11 @@
 
 /* Body */
 .procrewz-modal__body {
-  padding: var(--component-modal-body-padding, var(--space-24, 24px));
+  padding: var(--modal-body-padding, var(--space-24, 24px));
   overflow-y: auto;
-  color: var(--color-text-default, #111827);
-  font-size: var(--size-font-sm, 0.875rem);
-  line-height: var(--size-line-height-text, 1.5);
+  color: var(--text-color-default, #111827);
+  font-size: var(--font-size-body-sm, 0.875rem);
+  line-height: var(--line-height-text, 1.5);
 }
 
 /* Footer */
@@ -147,13 +141,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--component-modal-footer-gap, var(--space-12, 12px));
+  gap: var(--modal-footer-gap, var(--space-12, 12px));
   padding: var(--space-16, 16px) var(--space-24, 24px);
   border-top: var(--border-width-1, 1px) solid
-    var(
-      --component-modal-footer-border-color,
-      var(--color-border-subtle, #e5e7eb)
-    );
+    var(--modal-footer-border-color, var(--border-color-subtle, #e5e7eb));
 }
 
 /* Hide footer if empty */
@@ -206,7 +197,7 @@
   /* Container adjustments for drawer */
   .procrewz-modal__container {
     border-radius: var(--radius-16, 16px) var(--radius-16, 16px) 0 0;
-    min-height: var(--component-modal-width-small, 400px);
+    min-height: var(--modal-width-small, 400px);
     min-height: 50svh;
     min-height: 50dvh;
   }

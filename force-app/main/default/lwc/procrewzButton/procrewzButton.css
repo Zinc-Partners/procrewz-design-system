@@ -1,13 +1,13 @@
 /* Base Button */
 .procrewz-button {
   /* Typography */
-  font-family: var(--font-family-base);
+  font-family: var(--font-family-sans);
   font-size: var(
-    --size-font-sm,
+    --font-size-body-sm,
     0.875rem
   ); /* 14px - consistent across sizes like Shadcn */
   font-weight: var(--font-weight-medium, 500);
-  line-height: var(--size-line-height-input, 1.15);
+  line-height: var(--line-height-input, 1.15);
 
   /* Layout */
   display: inline-flex;
@@ -26,8 +26,8 @@
 
   /* Appearance */
   cursor: pointer;
-  background-color: var(--color-surface-default, #fcfcfd);
-  color: var(--color-text-default);
+  background-color: var(--surface-color-default, #fcfcfd);
+  color: var(--text-color-default);
   box-shadow: var(--shadow-xs, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
 
   /* Transitions */
@@ -45,7 +45,7 @@
 /* Focus Ring (Shadcn style - 3px ring with offset) */
 .procrewz-button:focus-visible {
   box-shadow:
-    0 0 0 2px var(--color-surface-default, #fff),
+    0 0 0 2px var(--surface-color-default, #fff),
     0 0 0 4px var(--color-focus-ring, #5a4295);
 }
 
@@ -73,100 +73,100 @@
 
 /* PRIMARY (Brand Purple) */
 .procrewz-button--primary {
-  background-color: var(--color-primary-default, #5a4295);
-  color: var(--color-text-inverse, #fff);
-  border-color: var(--color-primary-default, #5a4295);
+  background-color: var(--button-primary-background-default, #5a4295);
+  color: var(--text-color-inverse, #fff);
+  border-color: var(--button-primary-border, #5a4295);
 }
 
 .procrewz-button--primary:hover:not(:disabled):not(.procrewz-button--loading) {
-  background-color: var(--color-primary-hover, #423070);
-  border-color: var(--color-primary-hover, #423070);
+  background-color: var(--button-primary-background-hover, #423070);
+  border-color: var(--button-primary-background-hover, #423070);
 }
 
 .procrewz-button--primary:active:not(:disabled):not(.procrewz-button--loading) {
-  background-color: var(--color-primary-active, #140c27);
-  border-color: var(--color-primary-active, #140c27);
+  background-color: var(--button-primary-background-active, #140c27);
+  border-color: var(--button-primary-background-active, #140c27);
 }
 
 /* SECONDARY (Outlined) */
 .procrewz-button--secondary {
-  background-color: var(--color-surface-default, #fcfcfd);
-  color: var(--color-text-default, #111827);
-  border-color: var(--color-border-default, #d1d5db);
+  background-color: var(--surface-color-default, #fcfcfd);
+  color: var(--text-color-default, #111827);
+  border-color: var(--border-color-default, #d1d5db);
   border-width: var(--border-width-1, 1px);
 }
 
 .procrewz-button--secondary:hover:not(:disabled):not(
     .procrewz-button--loading
   ) {
-  background-color: var(--color-background-subtle, #f9fafb);
+  background-color: var(--background-color-subtle, #f9fafb);
 }
 
 .procrewz-button--secondary:active:not(:disabled):not(
     .procrewz-button--loading
   ) {
-  background-color: var(--color-background-hover, #f3f4f6);
+  background-color: var(--background-color-hover, #f3f4f6);
 }
 
 /* NAVY (Accent) */
 .procrewz-button--navy {
-  background-color: var(--color-accent-default, #2b2e69);
-  color: var(--color-text-inverse, #fff);
-  border-color: var(--color-accent-default, #2b2e69);
+  background-color: var(--button-accent-background-default, #2b2e69);
+  color: var(--text-color-inverse, #fff);
+  border-color: var(--button-accent-border, #2b2e69);
 }
 
 .procrewz-button--navy:hover:not(:disabled):not(.procrewz-button--loading) {
-  background-color: var(--color-accent-hover, #1d2050);
-  border-color: var(--color-accent-hover, #1d2050);
+  background-color: var(--button-accent-background-hover, #1d2050);
+  border-color: var(--button-accent-background-hover, #1d2050);
 }
 
 .procrewz-button--navy:active:not(:disabled):not(.procrewz-button--loading) {
-  background-color: var(--color-accent-active, #0d1620);
-  border-color: var(--color-accent-active, #0d1620);
+  background-color: var(--button-accent-background-active, #0d1620);
+  border-color: var(--button-accent-background-active, #0d1620);
 }
 
 /* DESTRUCTIVE */
 .procrewz-button--destructive {
-  background-color: var(--color-destructive-default, #dc2626);
-  color: var(--color-text-inverse, #fff);
-  border-color: var(--color-destructive-default, #dc2626);
+  background-color: var(--button-destructive-background-default, #dc2626);
+  color: var(--text-color-inverse, #fff);
+  border-color: var(--button-destructive-border, #dc2626);
 }
 
 .procrewz-button--destructive:hover:not(:disabled):not(
     .procrewz-button--loading
   ) {
-  background-color: var(--color-destructive-hover, #b91c1c);
-  border-color: var(--color-destructive-hover, #b91c1c);
+  background-color: var(--button-destructive-background-hover, #b91c1c);
+  border-color: var(--button-destructive-background-hover, #b91c1c);
 }
 
 .procrewz-button--destructive:active:not(:disabled):not(
     .procrewz-button--loading
   ) {
-  background-color: var(--color-destructive-active, #991b1b);
-  border-color: var(--color-destructive-active, #991b1b);
+  background-color: var(--button-destructive-background-active, #991b1b);
+  border-color: var(--button-destructive-background-active, #991b1b);
 }
 
 /* GHOST (Text only, no background or shadow) */
 .procrewz-button--ghost {
   background-color: transparent;
-  color: var(--color-text-default, #111827);
+  color: var(--text-color-default, #111827);
   border-color: transparent;
   box-shadow: none;
 }
 
 .procrewz-button--ghost:hover:not(:disabled):not(.procrewz-button--loading) {
-  background-color: var(--color-background-hover, #f3f4f6);
+  background-color: var(--background-color-hover, #f3f4f6);
   box-shadow: none;
 }
 
 .procrewz-button--ghost:active:not(:disabled):not(.procrewz-button--loading) {
-  background-color: var(--color-background-subtle, #e5e7eb);
+  background-color: var(--background-color-active, #e5e7eb);
   box-shadow: none;
 }
 
 .procrewz-button--ghost:focus-visible {
   box-shadow:
-    0 0 0 2px var(--color-surface-default, #fff),
+    0 0 0 2px var(--surface-color-default, #fff),
     0 0 0 4px var(--color-focus-ring, #5a4295);
 }
 
@@ -176,26 +176,26 @@
 
 /* Small: h-8 (32px), px-3 (12px), gap-1.5 (6px) */
 .procrewz-button--small {
-  height: var(--size-control-sm, 32px);
+  height: var(--control-height-sm, 32px);
   padding: 0 var(--space-12, 12px);
   gap: var(--space-4, 6px);
-  font-size: var(--size-font-sm, 0.875rem);
+  font-size: var(--font-size-body-sm, 0.875rem);
 }
 
 /* Medium/Default: h-9 (36px), px-4 (16px), gap-2 (8px) */
 .procrewz-button--medium {
-  height: var(--size-control-md, 36px);
+  height: var(--control-height-md, 36px);
   padding: 0 var(--space-16, 16px);
   gap: var(--space-8, 8px);
-  font-size: var(--size-font-sm, 0.875rem);
+  font-size: var(--font-size-body-sm, 0.875rem);
 }
 
 /* Large: h-10 (40px), px-6 (24px), gap-2 (8px) */
 .procrewz-button--large {
-  height: var(--size-control-lg, 40px);
+  height: var(--control-height-lg, 40px);
   padding: 0 var(--space-24, 24px);
   gap: var(--space-8, 8px);
-  font-size: var(--size-font-sm, 0.875rem);
+  font-size: var(--font-size-body-sm, 0.875rem);
 }
 
 /* ================================
@@ -214,18 +214,18 @@
 }
 
 .procrewz-button--icon-only.procrewz-button--small {
-  width: var(--size-control-sm, 32px);
-  height: var(--size-control-sm, 32px);
+  width: var(--control-height-sm, 32px);
+  height: var(--control-height-sm, 32px);
 }
 
 .procrewz-button--icon-only.procrewz-button--medium {
-  width: var(--size-control-md, 36px);
-  height: var(--size-control-md, 36px);
+  width: var(--control-height-md, 36px);
+  height: var(--control-height-md, 36px);
 }
 
 .procrewz-button--icon-only.procrewz-button--large {
-  width: var(--size-control-lg, 40px);
-  height: var(--size-control-lg, 40px);
+  width: var(--control-height-lg, 40px);
+  height: var(--control-height-lg, 40px);
 }
 
 /* With Icon - tighter padding (Shadcn: has-[>svg]:px-*) */
@@ -264,18 +264,18 @@
 
 /* Icon sizes per button size */
 .procrewz-button--small .procrewz-button__icon-img {
-  width: var(--size-icon-sm, 14px);
-  height: var(--size-icon-sm, 14px);
+  width: var(--icon-size-sm, 14px);
+  height: var(--icon-size-sm, 14px);
 }
 
 .procrewz-button--medium .procrewz-button__icon-img {
-  width: var(--size-icon-sm, 16px);
-  height: var(--size-icon-sm, 16px);
+  width: var(--icon-size-sm, 16px);
+  height: var(--icon-size-sm, 16px);
 }
 
 .procrewz-button--large .procrewz-button__icon-img {
-  width: var(--size-icon-md, 18px);
-  height: var(--size-icon-md, 18px);
+  width: var(--icon-size-md, 18px);
+  height: var(--icon-size-md, 18px);
 }
 
 /* Icon colors - use filters since <img> can't inherit currentColor */
@@ -314,18 +314,18 @@
 
 /* Spinner sizes */
 .procrewz-button--small .procrewz-button__spinner-svg {
-  width: var(--size-icon-sm, 14px);
-  height: var(--size-icon-sm, 14px);
+  width: var(--icon-size-sm, 14px);
+  height: var(--icon-size-sm, 14px);
 }
 
 .procrewz-button--medium .procrewz-button__spinner-svg {
-  width: var(--size-icon-sm, 16px);
-  height: var(--size-icon-sm, 16px);
+  width: var(--icon-size-sm, 16px);
+  height: var(--icon-size-sm, 16px);
 }
 
 .procrewz-button--large .procrewz-button__spinner-svg {
-  width: var(--size-icon-md, 18px);
-  height: var(--size-icon-md, 18px);
+  width: var(--icon-size-md, 18px);
+  height: var(--icon-size-md, 18px);
 }
 
 @keyframes procrewzSpin {
